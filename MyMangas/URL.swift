@@ -7,8 +7,8 @@
 
 import Foundation
 
-let mainURL = URL(string: "https://mymanga-acacademy-5607149ebe3d.herokuapp.com/list/mangas")!
+let mainURL = URL(string: "https://mymanga-acacademy-5607149ebe3d.herokuapp.com/")!
 
 extension URL {
-//    static let 
+    static let getMangas = mainURL.appending(path: "list/mangas")
 }

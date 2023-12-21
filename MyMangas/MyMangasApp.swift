@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct MyMangasApp: App {
+    @StateObject var vm = MangaVM()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MangasMainView()
+                .environmentObject(vm)
         }
     }
 }
