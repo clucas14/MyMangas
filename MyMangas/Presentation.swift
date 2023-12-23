@@ -24,6 +24,14 @@ struct Manga: Hashable, Identifiable {
 //    let authors: [AuthorRoles]
 //    let themes: [MangaThemes]
     
+    var urlPicture: URL {
+        URL(string: mainPicture.trimmingCharacters(in: CharacterSet(charactersIn: "\"")))!
+    }
+    
+    var score1Fraction: String {
+        score.formatted(.number.precision(.fractionLength(1)))
+    }
+    
 //Ponerlo como extensión?¿?¿
     var scoreColor: Color {
         switch score {

@@ -11,14 +11,19 @@ struct MangasMainView: View {
     @EnvironmentObject var vm: MangaVM
     
     var body: some View {
-        VStack {
+        NavigationStack {
             List {
-                ForEach(vm.mangas) {manga in
-                    Text(manga.title)
+                ForEach(vm.mangas) { manga in
+                    NavigationLink(value: manga) {
+                        MangaCellView(manga: manga)
+                    }
                 }
             }
+            .navigationTitle("Mangas")
+            //            navigationDestination(for: Manga.self) { manga in
+            //
+            //            }
         }
-        .padding()
     }
 }
 
