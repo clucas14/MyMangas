@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MangasMainView: View {
+struct MangasListView: View {
     @EnvironmentObject var vm: MangaVM
     
     var body: some View {
@@ -20,14 +20,14 @@ struct MangasMainView: View {
                 }
             }
             .navigationTitle("Mangas")
-            //            navigationDestination(for: Manga.self) { manga in
-            //
-            //            }
+            .navigationDestination(for: Manga.self) { manga in
+                MangaDetailView(manga: manga)
+            }
         }
     }
 }
 
 #Preview {
-    MangasMainView()
+    MangasListView()
         .environmentObject(MangaVM.test)
 }

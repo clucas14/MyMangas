@@ -21,6 +21,7 @@ struct Metadata: Codable {
 struct DTOManga: Codable {
     let id: Int
     let title: String
+    let titleJapanese: String
     let score: Double
     let mainPicture: String
     let chapters: Int?
@@ -31,37 +32,38 @@ struct DTOManga: Codable {
     let endDate: Date?
     let url: String
     
-//    struct Demographic: Codable {
-//        let demographic: MangaDemographics
-//        let id: String
-//    }
-//    let demographics: [Demographic]
-//    
-//    struct Genre: Codable {
-//        let genre: MangaGenres
-//        let id: String
-//    }
-//    let genres: [Genre]
-//    
-//    struct Author: Codable {
-//        let role: AuthorRoles
-//        let lastName: String
-//        let id: String
-//        let firstName: String
-//    }
-//    let authors: [Author]
-//    
-//    struct Theme: Codable {
-//        let theme: MangaThemes
-//        let id: String
-//    }
-//    let themes: [Theme]
+    struct Demographic: Codable {
+        let demographic: MangaDemographics
+        let id: String
+    }
+    let demographics: [Demographic]
+    
+    struct Genre: Codable {
+        let genre: MangaGenres
+        let id: String
+    }
+    let genres: [Genre]
+    
+    struct Author: Codable {
+        let role: AuthorRoles
+        let lastName: String
+        let id: String
+        let firstName: String
+    }
+    let authors: [Author]
+    
+    struct Theme: Codable {
+        let theme: MangaThemes
+        let id: String
+    }
+    let themes: [Theme]
 }
 
 extension DTOManga {
     var toPresentation: Manga {
         Manga(id: id,
-              title: title,
+              title: title, 
+              titleJapanese: titleJapanese,
               score: score,
               mainPicture: mainPicture,
               chapters: chapters,
@@ -73,7 +75,7 @@ extension DTOManga {
               url: url)
 //              demographics: [demographics.],
 //              genres: genres,
-//              authors: authors,
+        //      authors: authors)
 //              themes: themes)
     }
 }

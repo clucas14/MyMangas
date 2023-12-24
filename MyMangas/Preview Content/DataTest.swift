@@ -9,7 +9,8 @@ import Foundation
 
 extension Manga {
     static let test = Manga(id: 1245,
-                            title: "Berserk",
+                            title: "Berserk", 
+                            titleJapanese: "ベルセルク",
                             score: 9.47,
                             mainPicture: "\"https://cdn.myanimelist.net/images/manga/1/157897l.jpg\"",
                             chapters: nil,

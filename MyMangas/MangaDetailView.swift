@@ -17,10 +17,30 @@ struct MangaDetailView: View {
                 MangaCircleScoreView(manga: manga)
                 //No lo puedo hacer con offset porque la animación se salta el offset y se va moviendo hasta el offset
                 //.offset(CGSize(width: 130, height: -395.0))
-                    .padding(.top, -395)
+                    .padding(.top, -385)
                     .padding(.leading, 250)
+                HStack {
+                    Text("Título en japonés: ")
+                    Text(manga.titleJapanese)
+                }
+                HStack {
+                    Text("Autores: ")
+                    
+                }
+                HStack {
+                    Text("Géneros: ")
+                }
             }
             .navigationTitle(manga.title)
+            .toolbar {
+                ToolbarItem {
+                    Button {
+                        
+                    } label: {
+                        Text(manga.inCollection ? "Editar o eliminar" : "Añadir")
+                    }
+                }
+            }
         }
     }
 }
