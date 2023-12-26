@@ -23,9 +23,11 @@ struct MangaDetailView: View {
                     Text("Título en japonés: ")
                     Text(manga.titleJapanese)
                 }
-                HStack {
+                VStack {
                     Text("Autores: ")
-                    
+                    ForEach(manga.authors) {
+                        Text($0.fullName)
+                    }
                 }
                 HStack {
                     Text("Géneros: ")

@@ -18,6 +18,50 @@ struct Metadata: Codable {
     let page: Int
 }
 
+struct AuthorDTO: Codable {
+    let role: AuthorRoles
+    let lastName: String
+    let id: String
+    let firstName: String
+    
+    var toPresentation: Author {
+        Author(role: role, 
+               lastName: lastName,
+               id: id,
+               firstName: firstName)
+    }
+}
+
+struct DemographicDTO: Codable {
+    let demographic: MangaDemographics
+    let id: String
+    
+    var toPresentation: Demographic {
+        Demographic(demographic: demographic,
+                    id: id)
+    }
+}
+
+struct GenreDTO: Codable {
+    let genre: MangaGenres
+    let id: String
+    
+    var toPresentation: Genre {
+        Genre(genre: genre,
+              id: id)
+    }
+}
+
+struct ThemeDTO: Codable {
+    let theme: MangaThemes
+    let id: String
+    
+    var toPresentation: Theme {
+        Theme(theme: theme,
+              id: id)
+    }
+}
+
 struct DTOManga: Codable {
     let id: Int
     let title: String
@@ -26,37 +70,15 @@ struct DTOManga: Codable {
     let mainPicture: String
     let chapters: Int?
     let volumes: Int?
-    let status: String
+    let status: MangaStatus
     let sypnosis: String?
     let startDate: Date?
     let endDate: Date?
     let url: String
-    
-    struct Demographic: Codable {
-        let demographic: MangaDemographics
-        let id: String
-    }
-    let demographics: [Demographic]
-    
-    struct Genre: Codable {
-        let genre: MangaGenres
-        let id: String
-    }
-    let genres: [Genre]
-    
-    struct Author: Codable {
-        let role: AuthorRoles
-        let lastName: String
-        let id: String
-        let firstName: String
-    }
-    let authors: [Author]
-    
-    struct Theme: Codable {
-        let theme: MangaThemes
-        let id: String
-    }
-    let themes: [Theme]
+    let authors: [AuthorDTO]
+    let demographics: [DemographicDTO]
+    let genres: [GenreDTO]
+    let themes: [ThemeDTO]
 }
 
 extension DTOManga {
@@ -72,10 +94,10 @@ extension DTOManga {
               sypnosis: sypnosis,
               startDate: startDate,
               endDate: endDate,
-              url: url)
-//              demographics: [demographics.],
-//              genres: genres,
-        //      authors: authors)
-//              themes: themes)
+              url: url,
+              authors: authors.map(\.toPresentation),
+              demographics: demographics.map(\.toPresentation),
+              genres: genres.map(\.toPresentation),
+              themes: themes.map(\.toPresentation))
     }
 }

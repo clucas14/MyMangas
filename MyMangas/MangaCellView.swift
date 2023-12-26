@@ -16,7 +16,7 @@ struct MangaCellView: View {
             VStack(alignment: .leading) {
                 Text(manga.title)
                    // .font(.headline)
-                Text(manga.status)
+                Text(manga.status.rawValue)
                     .font(.caption)
                     .opacity(0.6)
             }

@@ -16,6 +16,9 @@ struct MangasListView: View {
                 ForEach(vm.mangas) { manga in
                     NavigationLink(value: manga) {
                         MangaCellView(manga: manga)
+                            .onAppear {
+                                vm.loadNextPage(manga: manga)
+                            }
                     }
                 }
             }
@@ -23,6 +26,8 @@ struct MangasListView: View {
             .navigationDestination(for: Manga.self) { manga in
                 MangaDetailView(manga: manga)
             }
+            .searchable(text: $vm.searchText, prompt: "Introduce tu busqueda")
+            
         }
     }
 }

@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol DataInteractorProtocol {
-    func getMangas(page: Int, per: Int) async throws -> [Manga]
+protocol MangaInteractorProtocol {
+    func getMangas(page: Int) async throws -> [Manga]
 }
 
-struct Network: DataInteractorProtocol {
+struct Network: MangaInteractorProtocol {
     func getJSON<JSON>(request: URLRequest, type: JSON.Type) async throws -> JSON where JSON: Codable {
         let (data, response) = try await URLSession.shared.getData(for: request)
         
@@ -29,7 +29,7 @@ struct Network: DataInteractorProtocol {
         }
     }
     
-    func getMangas(page: Int, per: Int) async throws -> [Manga] {
-        try await getJSON(request: .get(url: .getMangas), type: DTOMangasResult.self).items.map(\.toPresentation)
+    func getMangas(page: Int) async throws -> [Manga] {
+        try await getJSON(request: .getPaginateMangas(url: .getMangasURL, page: page), type: DTOMangasResult.self).items.map(\.toPresentation)
     }
 }

@@ -108,3 +108,14 @@ enum MangaDemographics: String, Codable, CaseIterable, Identifiable {
     
     var id: Self { self }
 }
+
+enum MangaStatus: String, Codable, CaseIterable, Identifiable {
+    case currentlyPublishing = "currently_publishing"
+    case finished = "finished"
+    
+    var capitalizedValue: String {
+        rawValue.capitalized.replacingOccurrences(of: "_", with: " ")
+    }
+    
+    var id: Self { self }
+}

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Manga: Hashable, Identifiable {
+struct Manga: Hashable, Identifiable {    
     let id: Int
     let title: String
     let titleJapanese: String
@@ -15,21 +15,18 @@ struct Manga: Hashable, Identifiable {
     let mainPicture: String
     let chapters: Int?
     let volumes: Int?
-    let status: String
+    let status: MangaStatus
     let sypnosis: String?
     let startDate: Date?
     let endDate: Date?
     let url: String
-//    let demographics: [MangaDemographics]
-//    let genres: [MangaGenres]
-    struct Author: Hashable, Identifiable {
-        let role: AuthorRoles
-        let lastName: String
-        let id: String
-        let firstName: String
-    }
-   // let authors: [Author]
-//    let themes: [MangaThemes]
+    let authors: [Author]
+    let demographics: [Demographic]
+    let genres: [Genre]
+    let themes: [Theme]
+    
+    //    let tomosComprados: Int?
+    //    let tomoLectura: Int?
     
     var inCollection = false
     
@@ -60,4 +57,35 @@ struct Manga: Hashable, Identifiable {
         }
     }
     
+}
+
+struct Author: Hashable, Identifiable {
+    let role: AuthorRoles
+    let lastName: String
+    let id: String
+    let firstName: String
+}
+
+struct Demographic: Hashable, Identifiable {
+    let demographic: MangaDemographics
+    let id: String
+}
+
+struct Genre: Hashable, Identifiable {
+    let genre: MangaGenres
+    let id: String
+}
+
+struct Theme: Hashable, Identifiable {
+    let theme: MangaThemes
+    let id: String
+}
+
+extension Author {
+    var fullName: String {
+        if !firstName.isEmpty {
+            return "\(lastName), \(firstName)"
+        }
+        return lastName
+    }
 }
