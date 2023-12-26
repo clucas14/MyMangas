@@ -31,7 +31,7 @@ final class MangaVM: ObservableObject {
             }
 //            Mostrar error en pantalla
         } catch {
-            print(error.localizedDescription)
+            print(error)
         }
     }
     

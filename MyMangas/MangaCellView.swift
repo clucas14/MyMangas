@@ -16,12 +16,12 @@ struct MangaCellView: View {
             VStack(alignment: .leading) {
                 Text(manga.title)
                    // .font(.headline)
-                Text(manga.status.rawValue)
+                Text(manga.status.capitalizedValue)
                     .font(.caption)
                     .opacity(0.6)
             }
             Spacer()
-            MangaCircleScoreView(manga: manga, circleSize: .small)
+            MangaCircleScoreView(manga: manga, circleSize: .small, progress: true)
         }
     }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 struct Manga: Hashable, Identifiable {    
     let id: Int
     let title: String
-    let titleJapanese: String
+    let titleJapanese: String?
     let score: Double
     let mainPicture: String
     let chapters: Int?

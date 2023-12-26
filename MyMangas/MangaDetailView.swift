@@ -21,7 +21,7 @@ struct MangaDetailView: View {
                     .padding(.leading, 250)
                 HStack {
                     Text("Título en japonés: ")
-                    Text(manga.titleJapanese)
+                    Text(manga.titleJapanese ?? "")
                 }
                 VStack {
                     Text("Autores: ")

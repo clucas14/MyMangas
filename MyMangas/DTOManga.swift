@@ -65,7 +65,7 @@ struct ThemeDTO: Codable {
 struct DTOManga: Codable {
     let id: Int
     let title: String
-    let titleJapanese: String
+    let titleJapanese: String?
     let score: Double
     let mainPicture: String
     let chapters: Int?
