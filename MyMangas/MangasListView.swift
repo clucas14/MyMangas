@@ -38,6 +38,8 @@ struct MangasListView: View {
             //                    await vm.searchMangas()
             //                }
             //            }
+            
+            // Parece que tengo un DataRace o algo del estilo REVISAAAAAAAAR
             .onChange(of: vm.searchText) {
                 Task {
                     // Para evitar que se ponga a buscar antes de completar el texto de búsqueda si se escribe muy rápido
