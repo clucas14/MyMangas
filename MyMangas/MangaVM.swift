@@ -11,10 +11,18 @@ final class MangaVM: ObservableObject {
     let mangaInteractor: MangaInteractorProtocol
     
     @Published var mangas: [Manga] = []
+    @Published var searchText = "" {
+        willSet {
+            page = 1
+//            mangas.removeAll() // No funciona bien, cuando cambias de vista lo borra también
+        }
+    }
+    @Published var sortOption = ""
     
     var page = 1
-    
-    @Published var searchText = ""
+// Hay que calcular el total de páginas para que no pueda hacer una llamada a getmangas de una página que no existe
+//    Hacer que la búsqueda tenga un sleep
+//    Ver temas filtros
     
     init(network: MangaInteractorProtocol = Network()) {
         self.mangaInteractor = network
@@ -29,7 +37,7 @@ final class MangaVM: ObservableObject {
             await MainActor.run {
                 self.mangas += mangs
             }
-//            Mostrar error en pantalla
+            //            Mostrar error en pantalla, ver foto
         } catch {
             print(error)
         }
@@ -42,6 +50,35 @@ final class MangaVM: ObservableObject {
     func loadNextPage(manga: Manga) {
         if isLastItem(manga: manga) {
             page += 1
+            Task {
+                await searchText.isEmpty ? getMangas() : searchMangas()
+            }
+        }
+    }
+    
+    func searchMangas() async {
+        if !searchText.isEmpty {
+            do {
+                // Si es la primera búsqueda vaciamos el array de mangas
+                if page == 1 {
+                    await MainActor.run {
+                        mangas.removeAll()
+                    }
+                }
+                try await Task.sleep(nanoseconds: 600)
+                let mangs = try await mangaInteractor.searchMangas(page: page, searchString: searchText)
+                await MainActor.run {
+                    self.mangas += mangs
+                }
+            } catch {
+                print(error)
+            }
+            //            Darle una vuelta al else
+        } else {
+            await MainActor.run {
+                mangas.removeAll()
+            }
+            page = 1
             Task {
                 await getMangas()
             }

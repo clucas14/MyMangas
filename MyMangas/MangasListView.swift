@@ -27,6 +27,24 @@ struct MangasListView: View {
                 MangaDetailView(manga: manga)
             }
             .searchable(text: $vm.searchText, prompt: "Introduce tu busqueda")
+            .autocorrectionDisabled()
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    
+                }
+            }
+            //            .onSubmit(of: .search) {
+            //                Task {
+            //                    await vm.searchMangas()
+            //                }
+            //            }
+            .onChange(of: vm.searchText) {
+                Task {
+                    // Para evitar que se ponga a buscar antes de completar el texto de búsqueda si se escribe muy rápido
+                    try await Task.sleep(nanoseconds: 1000000000)
+                    await vm.searchMangas()
+                }
+            }
             
         }
     }

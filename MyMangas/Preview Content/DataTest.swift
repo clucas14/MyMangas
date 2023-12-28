@@ -40,4 +40,13 @@ struct DataTest: MangaInteractorProtocol {
         let data = try Data(contentsOf: url)
         return try decoder.decode([DTOManga].self, from: data).map(\.toPresentation)
     }
+    
+//    HAY QUE MODIFICARLA!!!!
+    func searchMangas(page: Int, searchString: String) async throws -> [Manga] {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(.dateFormatCustom)
+        
+        let data = try Data(contentsOf: url)
+        return try decoder.decode([DTOManga].self, from: data).map(\.toPresentation)
+    }
 }

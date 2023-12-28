@@ -110,9 +110,6 @@ enum MangaDemographics: String, Codable, CaseIterable, Identifiable {
 }
 
 enum MangaStatus: String, Codable {
-    //    case currently_publishing = "Currently Publishing"
-    //    case finished = "Finished"
-    //    case on_hiatus = "On Hiatus"
     case currentlyPublishing = "currently_publishing"
     case finished = "finished"
     case onHiatus = "on_hiatus"

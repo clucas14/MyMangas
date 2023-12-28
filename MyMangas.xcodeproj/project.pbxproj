@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A295C8F2B3DEBF200D37810 /* SortedOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A295C8E2B3DEBF200D37810 /* SortedOptions.swift */; };
 		4A4142EF2B34BFEE000DA882 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4142EE2B34BFEE000DA882 /* Model.swift */; };
 		4A4142F12B34C2EF000DA882 /* MangaVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4142F02B34C2EF000DA882 /* MangaVM.swift */; };
 		4A4142F32B34CB7E000DA882 /* testMangas.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A4142F22B34CB7E000DA882 /* testMangas.json */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A295C8E2B3DEBF200D37810 /* SortedOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedOptions.swift; sourceTree = "<group>"; };
 		4A4142EE2B34BFEE000DA882 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		4A4142F02B34C2EF000DA882 /* MangaVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaVM.swift; sourceTree = "<group>"; };
 		4A4142F22B34CB7E000DA882 /* testMangas.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testMangas.json; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 			children = (
 				4A46D9892B37524400729288 /* MangaCircleScoreView.swift */,
 				4A46D9902B37591600729288 /* MangaPictureView.swift */,
+				4A295C8E2B3DEBF200D37810 /* SortedOptions.swift */,
 			);
 			name = ViewComponents;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 				4A9242BF2B321DE900CF07F7 /* MangasListView.swift in Sources */,
 				4A9242D32B32239E00CF07F7 /* URLSesion.swift in Sources */,
 				4A46D98E2B3756E200729288 /* MangaDetailView.swift in Sources */,
+				4A295C8F2B3DEBF200D37810 /* SortedOptions.swift in Sources */,
 				4A8D02D22B38990A007413E5 /* MangasTabView.swift in Sources */,
 				4A9242E22B3228ED00CF07F7 /* DTOManga.swift in Sources */,
 				4A4142EF2B34BFEE000DA882 /* Model.swift in Sources */,
