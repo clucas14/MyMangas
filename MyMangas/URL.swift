@@ -13,4 +13,6 @@ extension URL {
     static let getMangasURL = mainURL.appending(path: "list/mangas")
     static let searchMangasURL = mainURL.appending(path: "search/mangasContains")
     static let getMangasByGenreURL = mainURL.appending(path: "list/mangaByGenre")
+    static let getMangasByThemeURL = mainURL.appending(path: "list/mangaByTheme")
+    static let getMangasByDemographicURL = mainURL.appending(path: "list/mangaByDemographic")
 }

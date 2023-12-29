@@ -51,7 +51,25 @@ struct DataTest: MangaInteractorProtocol {
     }
     
     //    HAY QUE MODIFICARLA!!!!
-    func getMangasByGenre(page: Int, sortType: String, sortOption: String) async throws -> [Manga] {
+    func getMangasByGenre(page: Int, sortOption: String) async throws -> [Manga] {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(.dateFormatCustom)
+        
+        let data = try Data(contentsOf: url)
+        return try decoder.decode([DTOManga].self, from: data).map(\.toPresentation)
+    }
+    
+    //    HAY QUE MODIFICARLA!!!!
+    func getMangasByTheme(page: Int, sortOption: String) async throws -> [Manga] {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(.dateFormatCustom)
+        
+        let data = try Data(contentsOf: url)
+        return try decoder.decode([DTOManga].self, from: data).map(\.toPresentation)
+    }
+    
+    //    HAY QUE MODIFICARLA!!!!
+    func getMangasByDemographic(page: Int, sortOption: String) async throws -> [Manga] {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(.dateFormatCustom)
         

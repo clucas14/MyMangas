@@ -124,6 +124,7 @@ enum SortType: String, CaseIterable, Identifiable {
     case themes = "Temas"
     case genres = "Género"
     case demographics = "Demografías"
+    case nofilter = ""
     
     var id: Self { self }
 }

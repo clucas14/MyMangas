@@ -28,13 +28,10 @@ extension URLRequest {
 //        return request
 //    }
     
-    static func get(url: URL, page: Int, per: Int = 10, string: String? = nil, sortOption: String? = nil) -> URLRequest {
+    static func get(url: URL, page: Int, per: Int = 10, string: String? = nil) -> URLRequest {
         var request = URLRequest(url: url)
         if let string {
             request.url?.append(path: string)
-        }
-        if let sortOption {
-            request.url?.append(path: sortOption)
         }
         let paramPage = URLQueryItem(name: "page", value: "\(page)")
         let paramPer = URLQueryItem(name: "per", value: "\(per)")

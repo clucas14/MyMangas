@@ -17,12 +17,12 @@ final class MangaVM: ObservableObject {
             //            mangas.removeAll() // No funciona bien, cuando cambias de vista lo borra también
         }
     }
-    @Published var sortType: SortType = .genres
+    @Published var sortType: SortType = .nofilter
     @Published var sortOption = "" {
         willSet {
             page = 1
             Task {
-                await sortedMangasByGenre(sortType: sortType.rawValue, sortOption: newValue)
+                await sortedMangasByType(sortOption: newValue)
             }
         }
     }
@@ -58,8 +58,23 @@ final class MangaVM: ObservableObject {
     func loadNextPage(manga: Manga) {
         if isLastItem(manga: manga) {
             page += 1
-            Task {
-                await searchText.isEmpty ? getMangas() : searchMangas()
+            switch sortType {
+            case .themes:
+                Task {
+                    await sortedMangasByType(sortOption: sortOption)
+                }
+            case .genres:
+                Task {
+                    await sortedMangasByType(sortOption: sortOption)
+                }
+            case .demographics:
+                Task {
+                    await sortedMangasByType(sortOption: sortOption)
+                }
+            case .nofilter:
+                Task {
+                    await searchText.isEmpty ? getMangas() : searchMangas()
+                }
             }
         }
     }
@@ -93,13 +108,31 @@ final class MangaVM: ObservableObject {
         }
     }
     
-    func sortedMangasByGenre(sortType: String, sortOption: String) async {
+    func sortedMangasByType(sortOption: String) async {
         do {
-            print("SortType es: \(sortType)")
-            print("SortOption es: \(sortOption)")
-            let mangs = try await mangaInteractor.getMangasByGenre(page: page, sortType: sortType, sortOption: sortOption)
-            await MainActor.run {
-                self.mangas += mangs
+            if page == 1 {
+                await MainActor.run {
+                    mangas.removeAll()
+                }
+            }
+            switch sortType {
+            case .themes:
+                let mangs = try await mangaInteractor.getMangasByTheme(page: page, sortOption: sortOption)
+                await MainActor.run {
+                    self.mangas += mangs
+                }
+            case .genres:
+                let mangs = try await mangaInteractor.getMangasByGenre(page: page, sortOption: sortOption)
+                await MainActor.run {
+                    self.mangas += mangs
+                }
+            case .demographics:
+                let mangs = try await mangaInteractor.getMangasByDemographic(page: page, sortOption: sortOption)
+                await MainActor.run {
+                    self.mangas += mangs
+                }
+            case.nofilter:
+                print()
             }
         } catch {
             print(error)

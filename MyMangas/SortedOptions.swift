@@ -40,8 +40,20 @@ fileprivate struct SortedButton: ViewModifier {
                         } label: {
                             Text(SortType.themes.rawValue)
                         }
+                        Menu {
+                            ForEach(MangaDemographics.allCases) {demographic in
+                                Button {
+                                    sortType = .demographics
+                                    sortOption = demographic.rawValue
+                                } label: {
+                                    Text(demographic.rawValue)
+                                }
+                            }
+                        } label: {
+                            Text(SortType.demographics.rawValue)
+                        }
                     } label: {
-                        Text("Filtrar por")
+                        Text("Filtrar por: \(sortType.rawValue) -> \(sortOption)")
                     }
                 }
             }
