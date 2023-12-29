@@ -119,3 +119,11 @@ enum MangaStatus: String, Codable {
         rawValue.capitalized.replacingOccurrences(of: "_", with: " ")
     }
 }
+
+enum SortType: String, CaseIterable, Identifiable {
+    case themes = "Temas"
+    case genres = "Género"
+    case demographics = "Demografías"
+    
+    var id: Self { self }
+}

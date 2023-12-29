@@ -10,6 +10,7 @@ import Foundation
 protocol MangaInteractorProtocol {
     func getMangas(page: Int) async throws -> [Manga]
     func searchMangas(page: Int, searchString: String) async throws -> [Manga]
+    func getMangasByGenre(page: Int, sortType: String, sortOption: String) async throws -> [Manga]
 }
 
 struct Network: MangaInteractorProtocol {
@@ -36,6 +37,10 @@ struct Network: MangaInteractorProtocol {
     }
     
     func searchMangas(page: Int, searchString: String) async throws -> [Manga] {
-        try await getJSON(request: .get(url: .searchMangasURL, page: page, searchString: searchString), type: DTOMangasResult.self).items.map(\.toPresentation)
+        try await getJSON(request: .get(url: .searchMangasURL, page: page, string: searchString), type: DTOMangasResult.self).items.map(\.toPresentation)
+    }
+    
+    func getMangasByGenre(page: Int, sortType: String, sortOption: String) async throws -> [Manga] {
+        try await getJSON(request: .get(url: .getMangasByGenreURL, page: page, string: sortType, sortOption: sortOption), type: DTOMangasResult.self).items.map(\.toPresentation)
     }
 }

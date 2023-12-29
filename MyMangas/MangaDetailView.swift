@@ -29,8 +29,11 @@ struct MangaDetailView: View {
                         Text($0.fullName)
                     }
                 }
-                HStack {
+                VStack {
                     Text("Géneros: ")
+                    ForEach(manga.genres) {
+                        Text($0.genre.rawValue)
+                    }
                 }
             }
             .navigationTitle(manga.title)

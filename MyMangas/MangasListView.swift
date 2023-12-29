@@ -23,15 +23,11 @@ struct MangasListView: View {
                 }
             }
             .navigationTitle("Mangas")
-            .navigationDestination(for: Manga.self) { manga in
-                MangaDetailView(manga: manga)
-            }
             .searchable(text: $vm.searchText, prompt: "Introduce tu busqueda")
             .autocorrectionDisabled()
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    
-                }
+            .sortedButton(sortOption: $vm.sortOption, sortType: $vm.sortType)
+            .navigationDestination(for: Manga.self) { manga in
+                MangaDetailView(manga: manga)
             }
             //            .onSubmit(of: .search) {
             //                Task {
@@ -44,6 +40,7 @@ struct MangasListView: View {
                 Task {
                     // Para evitar que se ponga a buscar antes de completar el texto de búsqueda si se escribe muy rápido
                     try await Task.sleep(nanoseconds: 1000000000)
+//                    Ver la opción de hacerlo con timer scechule VER FOTO
                     await vm.searchMangas()
                 }
             }
