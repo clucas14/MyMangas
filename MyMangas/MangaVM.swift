@@ -17,20 +17,19 @@ final class MangaVM: ObservableObject {
             //            mangas.removeAll() // No funciona bien, cuando cambias de vista lo borra también
         }
     }
-    @Published var sortType: SortType = .nofilter
-    @Published var sortOption = "" {
-        willSet {
+    @Published var sortType: SortType = .nofilter {
+        didSet {
             page = 1
             Task {
-                await sortedMangasByType(sortOption: newValue)
+                await sortedMangasByType(sortOption: sortOption)
             }
         }
     }
+    @Published var sortOption = ""
     
     var page = 1
     // Hay que calcular el total de páginas para que no pueda hacer una llamada a getmangas de una página que no existe
     //    Hacer que la búsqueda tenga un sleep
-    //    Ver temas filtros
     
     init(network: MangaInteractorProtocol = Network()) {
         self.mangaInteractor = network
@@ -132,7 +131,13 @@ final class MangaVM: ObservableObject {
                     self.mangas += mangs
                 }
             case.nofilter:
-                print()
+                await MainActor.run {
+                    mangas.removeAll()
+                }
+                page = 1
+                Task {
+                    await getMangas()
+                }
             }
         } catch {
             print(error)

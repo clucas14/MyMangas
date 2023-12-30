@@ -16,11 +16,16 @@ fileprivate struct SortedButton: ViewModifier {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Menu {
+                        Button {
+                            sortType = .nofilter
+                        } label: {
+                            Text(SortType.nofilter.rawValue)
+                        }
                         Menu {
                             ForEach(MangaGenres.allCases) {genre in
                                 Button {
-                                    sortType = .genres
                                     sortOption = genre.rawValue
+                                    sortType = .genres
                                 } label: {
                                     Text(genre.rawValue)
                                 }
@@ -31,8 +36,8 @@ fileprivate struct SortedButton: ViewModifier {
                         Menu {
                             ForEach(MangaThemes.allCases) {theme in
                                 Button {
-                                    sortType = .themes
                                     sortOption = theme.rawValue
+                                    sortType = .themes
                                 } label: {
                                     Text(theme.rawValue)
                                 }
@@ -43,8 +48,8 @@ fileprivate struct SortedButton: ViewModifier {
                         Menu {
                             ForEach(MangaDemographics.allCases) {demographic in
                                 Button {
-                                    sortType = .demographics
                                     sortOption = demographic.rawValue
+                                    sortType = .demographics
                                 } label: {
                                     Text(demographic.rawValue)
                                 }
@@ -53,7 +58,8 @@ fileprivate struct SortedButton: ViewModifier {
                             Text(SortType.demographics.rawValue)
                         }
                     } label: {
-                        Text("Filtrar por: \(sortType.rawValue) -> \(sortOption)")
+                        Image(systemName: "line.3.horizontal.decrease.circle")
+//                        Text("Filtrar por: \(sortType.rawValue) -> \(sortOption)")
                     }
                 }
             }
