@@ -26,6 +26,7 @@ final class MangaVM: ObservableObject {
         }
     }
     @Published var sortOption = ""
+    @Published var searchEmpty = false
     
     var page = 1
     // Hay que calcular el total de páginas para que no pueda hacer una llamada a getmangas de una página que no existe
@@ -87,9 +88,13 @@ final class MangaVM: ObservableObject {
                         mangas.removeAll()
                     }
                 }
-                //                try await Task.sleep(nanoseconds: 600)
                 let mangs = try await mangaInteractor.searchMangas(page: page, searchString: searchText)
                 await MainActor.run {
+                    if mangs.isEmpty {
+                        searchEmpty = true
+                    } else {
+                        searchEmpty = false
+                    }
                     self.mangas += mangs
                 }
             } catch {
@@ -99,6 +104,7 @@ final class MangaVM: ObservableObject {
         } else {
             await MainActor.run {
                 mangas.removeAll()
+                searchEmpty = false
             }
             page = 1
             Task {
