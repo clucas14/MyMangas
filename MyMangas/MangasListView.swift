@@ -34,15 +34,17 @@ struct MangasListView: View {
             //                    await vm.searchMangas()
             //                }
             //            }
-            
-            // Parece que tengo un DataRace o algo del estilo REVISAAAAAAAAR
-            .onChange(of: vm.searchText) {
-                Task {
+            .onChange(of: vm.searchText) { oldValue, newValue in
                     // Para evitar que se ponga a buscar antes de completar el texto de búsqueda si se escribe muy rápido
+                Task {
                     try await Task.sleep(nanoseconds: 1000000000)
-//                    Ver la opción de hacerlo con timer scechule VER FOTO
-                    await vm.searchMangas()
+                    if vm.searchText == newValue {
+                        await vm.searchMangas()
+                    }
                 }
+//                    Ver la opción de hacerlo con timer scechule VER FOTO
+                    
+//                }
             }
             
         }
