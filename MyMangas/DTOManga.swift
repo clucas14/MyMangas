@@ -98,6 +98,7 @@ extension DTOManga {
               authors: authors.map(\.toPresentation),
               demographics: demographics.map(\.toPresentation),
               genres: genres.map(\.toPresentation),
-              themes: themes.map(\.toPresentation))
+              themes: themes.map(\.toPresentation), 
+              inCollection: false)
     }
 }

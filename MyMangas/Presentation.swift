@@ -24,11 +24,10 @@ struct Manga: Hashable, Identifiable {
     let demographics: [Demographic]
     let genres: [Genre]
     let themes: [Theme]
+    var inCollection: Bool
     
     //    let tomosComprados: Int?
     //    let tomoLectura: Int?
-    
-    var inCollection = false
     
     var urlPicture: URL {
         URL(string: mainPicture.trimmingCharacters(in: CharacterSet(charactersIn: "\"")))!

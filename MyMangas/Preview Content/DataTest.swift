@@ -12,7 +12,7 @@ extension Manga {
                             title: "Berserk", 
                             titleJapanese: "ベルセルク",
                             score: 9.47,
-                            mainPicture: "\"https://cdn.myanimelist.net/images/manga/1/157897l.jpg\"",
+                            mainPicture: "\"https://cdn.myanimelist.net/images/manga/3/76401l.jpg\"",
                             chapters: nil,
                             volumes: nil,
                             status: .finished,
@@ -23,7 +23,8 @@ extension Manga {
                             authors: [Author(role: .storyArt, lastName: "Miura", id: "6F0B6948-08C4-4761-8BE1-192E68AB0A2F", firstName: "Kentarou"), Author(role: .art, lastName: "Studio Gaga", id: "0304C4E9-2D89-463A-8FDD-EEAB5B9D57B3", firstName: "")],
                             demographics: [],
                             genres: [],
-                            themes: [])
+                            themes: [],
+                            inCollection: true)
 }
 
 extension MangaVM {

@@ -14,23 +14,30 @@ final class MangaVM: ObservableObject {
     @Published var searchText = "" {
         willSet {
             page = 1
-            //            mangas.removeAll() // No funciona bien, cuando cambias de vista lo borra también
+            if sortType != .nofilter {
+                sortType = .nofilter
+            }
         }
     }
     @Published var sortType: SortType = .nofilter {
         didSet {
-            page = 1
-            Task {
-                await sortedMangasByType(sortOption: sortOption)
+            if sortType != .nofilter {
+                page = 1
+                Task {
+                    await sortedMangasByType(sortOption: sortOption)
+                }
             }
         }
     }
     @Published var sortOption = ""
     @Published var searchEmpty = false
     
+    var myCollection: [Manga] {
+        mangas.filter { $0.inCollection }
+    }
+    
     var page = 1
     // Hay que calcular el total de páginas para que no pueda hacer una llamada a getmangas de una página que no existe
-    //    Hacer que la búsqueda tenga un sleep
     
     init(network: MangaInteractorProtocol = Network()) {
         self.mangaInteractor = network
@@ -147,6 +154,12 @@ final class MangaVM: ObservableObject {
             }
         } catch {
             print(error)
+        }
+    }
+    
+    func toggleMyCollection(manga: Manga){
+        if let index = mangas.firstIndex(where: { $0.id == manga.id}){
+            mangas[index].inCollection.toggle()
         }
     }
 }

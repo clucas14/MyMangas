@@ -37,15 +37,15 @@ struct MangaDetailView: View {
                 }
             }
             .navigationTitle(manga.title)
-            .toolbar {
-                ToolbarItem {
-                    Button {
-                        
-                    } label: {
-                        Text(manga.inCollection ? "Editar o eliminar" : "Añadir")
-                    }
-                }
-            }
+//            .toolbar {
+//                ToolbarItem {
+//                    Button {
+//                        
+//                    } label: {
+//                        Text(manga.inCollection ? "Editar o eliminar" : "Añadir")
+//                    }
+//                }
+//            }
         }
     }
 }

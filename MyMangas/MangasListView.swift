@@ -19,6 +19,14 @@ struct MangasListView: View {
                     ForEach(vm.mangas) { manga in
                         NavigationLink(value: manga) {
                             MangaCellView(manga: manga)
+                                .swipeActions(edge: .leading) {
+                                    Button {
+                                        vm.toggleMyCollection(manga: manga)
+                                    } label: {
+                                        Label(manga.inCollection ? "Quitar de mi colección" : "Añadir a mi colección", systemImage: manga.inCollection ? "minus" : "plus")
+                                    }
+                                    .tint(manga.inCollection ? .red : .yellow)
+                                }
                                 .onAppear {
                                     vm.loadNextPage(manga: manga)
                                 }
@@ -26,13 +34,13 @@ struct MangasListView: View {
                     }
                 }
                 .navigationTitle("Mangas")
-                .searchable(text: $vm.searchText, prompt: "Introduce tu busqueda")
+                .searchable(text: $vm.searchText, prompt: "Introduce tu búsqueda")
                 .autocorrectionDisabled()
                 .sortedButton(sortOption: $vm.sortOption, sortType: $vm.sortType)
                 .navigationDestination(for: Manga.self) { manga in
                     MangaDetailView(manga: manga)
                 }
-                .onChange(of: vm.searchText) { oldValue, newValue in
+                .onChange(of: vm.searchText) { _, newValue in
                     // Para evitar que se ponga a buscar antes de completar el texto de búsqueda si se escribe muy rápido
                     Task {
                         try await Task.sleep(for: .seconds(1))
@@ -40,14 +48,15 @@ struct MangasListView: View {
                             await vm.searchMangas()
                         }
                     }
-                    //                    Ver la opción de hacerlo con timer scechule VER FOTO
                 }
             }
-        
-        HStack {
-            Text("No hay resultados en la búsqueda")
-        }
-        .opacity(vm.searchEmpty ? 1 : 0)
+            VStack {
+                Text("No hay resultados en la búsqueda")
+                    .bold()
+                Image(systemName: "magnifyingglass")
+                    .font(.title)
+            }
+            .opacity(vm.searchEmpty ? 1 : 0)
         }
     }
 }

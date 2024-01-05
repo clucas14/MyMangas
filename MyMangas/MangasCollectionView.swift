@@ -8,11 +8,26 @@
 import SwiftUI
 
 struct MangasCollectionView: View {
+    @EnvironmentObject var vm: MangaVM
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            List {
+                ForEach(vm.myCollection) { manga in
+                    NavigationLink(value: manga) {
+                        MangaCellView(manga: manga)
+                    }
+                }
+            }
+            .navigationTitle("Mi colección")
+            .navigationDestination(for: Manga.self) { manga in
+                MangaDetailView(manga: manga)
+            }
+        }
     }
 }
 
 #Preview {
     MangasCollectionView()
+        .environmentObject(MangaVM.test)
 }
