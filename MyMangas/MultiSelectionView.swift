@@ -14,28 +14,29 @@ struct MultiSelectionView: View {
     //        @Binding
     //        var selected: Set<Selectable>
     
-//    let manga: Manga
+    //    let manga: Manga
+    //    @EnvironmentObject var vm: MangaVM
     @ObservedObject var editVM: MangaEditVM
     
     var body: some View {
         List {
             if let volumes = editVM.manga.volumes {
                 ForEach(1..<volumes + 1) { volume in
+                    //                    Button(action: { vm.toggleSelectionVolume(manga: manga, volume: volume) }) {
                     Button(action: { editVM.toggleSelectionVolume(volume: volume) }) {
                         HStack {
-                            //                            Text(optionToString(selectable)).foregroundColor(.black)
                             Text("Volumen \(volume)")
+                                .foregroundStyle(.black)
                             Spacer()
-                            if editVM.manga.ownedVolumes.contains(volume) {
-                                Image(systemName: "checkmark").foregroundColor(.accentColor)
-                            }
+                            Image(systemName: "checkmark").foregroundColor(.accentColor)
+                                .opacity(editVM.ownedVolumes.contains(volume) ? 1 : 0)
                         }
-                    }//.tag(selectable.id)
+                    }
                 }
             } else {
                 Text("No hay datos de los volúmenes")
             }
-        }.listStyle(GroupedListStyle())
+        }//.listStyle(GroupedListStyle())
     }
 }
 

@@ -101,6 +101,7 @@ extension DTOManga {
               themes: themes.map(\.toPresentation), 
               inCollection: false,
               ownedVolumes: [],
-              readingVolume: 0)
+              readingVolume: 0, 
+              completeCollection: false)
     }
 }

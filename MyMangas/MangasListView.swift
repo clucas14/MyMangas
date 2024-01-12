@@ -12,7 +12,7 @@ import SwiftUI
 struct MangasListView: View {
     @EnvironmentObject var vm: MangaVM
     
-    @State var showAddCollection = false
+    @State var selectedManga: Manga?
     
     var body: some View {
         ZStack {
@@ -23,8 +23,12 @@ struct MangasListView: View {
                             MangaCellView(manga: manga)
                                 .swipeActions(edge: .leading) {
                                     Button {
-                                        vm.toggleMyCollection(manga: manga)
-                                        showAddCollection.toggle()
+                                        if manga.inCollection {
+                                            vm.toggleMyCollection(manga: manga)
+                                            //                                            Mensaje de si seguro que quiere eliminarlo
+                                        } else {
+                                            selectedManga = manga
+                                        }
                                     } label: {
                                         Label(manga.inCollection ? "Quitar de mi colección" : "Añadir a mi colección", systemImage: manga.inCollection ? "minus" : "plus")
                                     }
@@ -32,9 +36,6 @@ struct MangasListView: View {
                                 }
                                 .onAppear {
                                     vm.loadNextPage(manga: manga)
-                                }
-                                .sheet(isPresented: $showAddCollection) {
-                                    AddMangaCollection(manga: manga)
                                 }
                         }
                     }
@@ -46,6 +47,11 @@ struct MangasListView: View {
                 .navigationDestination(for: Manga.self) { manga in
                     MangaDetailView(manga: manga)
                 }
+                .sheet(item: $selectedManga, content: { manga in
+                    AddMangaCollection(editVM: MangaEditVM(manga: manga))
+                        .presentationDetents([.medium])
+                        .interactiveDismissDisabled()
+                })
                 .onChange(of: vm.searchText) { _, newValue in
                     // Para evitar que se ponga a buscar antes de completar el texto de búsqueda si se escribe muy rápido
                     Task {

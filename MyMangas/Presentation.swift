@@ -27,6 +27,7 @@ struct Manga: Hashable, Identifiable {
     var inCollection: Bool
     var ownedVolumes: Set<Int>
     var readingVolume: Int
+    var completeCollection: Bool
     
     //    let tomosComprados: Int?
     //    let tomoLectura: Int?
@@ -39,14 +40,6 @@ struct Manga: Hashable, Identifiable {
         score.formatted(.number.precision(.fractionLength(1)))
     }
     
-    var listOwnedVolumes: String {
-        if !ownedVolumes.isEmpty {
-            let ownedVolumesString = ownedVolumes.sorted().map { "\($0)" }
-            return ownedVolumesString.formatted(.list(type: .and).locale(Locale(identifier: "es")))
-        } else {
-            return "No hay ninguno seleccionado"
-        }
-    }
 //    var authorsString: String {
 //        let authorsCollection = authors.map{"\($0.firstName) \($0.lastName)"}
 //        return authorsCollection.formatted(.list(type: .and))

@@ -21,12 +21,12 @@ final class MangaVM: ObservableObject {
     }
     @Published var sortType: SortType = .nofilter {
         didSet {
-            if sortType != .nofilter {
+//            if sortType != .nofilter {
                 page = 1
                 Task {
                     await sortedMangasByType(sortOption: sortOption)
                 }
-            }
+//            }
         }
     }
     @Published var sortOption = ""
@@ -157,14 +157,14 @@ final class MangaVM: ObservableObject {
         }
     }
     
-    func toggleMyCollection(manga: Manga){
-        if let index = mangas.firstIndex(where: { $0.id == manga.id}){
+    func toggleMyCollection(manga: Manga) {
+        if let index = mangas.firstIndex(where: { $0.id == manga.id }) {
             mangas[index].inCollection.toggle()
         }
     }
     
 //    func toggleSelectionVolume(manga: Manga, volume: Int){
-//        if let index = mangas.firstIndex(where: { $0.id == manga.id}){
+//        if let index = mangas.firstIndex(where: { $0.id == manga.id }) {
 //            if mangas[index].ownedVolumes.contains(volume) {
 //                mangas[index].ownedVolumes.remove(volume)
 //            } else {
@@ -172,4 +172,10 @@ final class MangaVM: ObservableObject {
 //            }
 //        }
 //    }
+    
+    func updateManga(manga: Manga) {
+        if let index = mangas.firstIndex(where: { $0.id == manga.id }) {
+                mangas[index] = manga
+        }
+    }
 }

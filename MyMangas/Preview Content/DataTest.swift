@@ -26,7 +26,8 @@ extension Manga {
                             themes: [],
                             inCollection: true,
                             ownedVolumes: [1,3],
-                            readingVolume: 1)
+                            readingVolume: 1,
+                            completeCollection: false)
 }
 
 extension MangaVM {

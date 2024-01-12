@@ -9,48 +9,68 @@ import SwiftUI
 
 struct AddMangaCollection: View {
     
-    let manga: Manga
+    @ObservedObject var editVM: MangaEditVM
+    @EnvironmentObject var vm: MangaVM
+    
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         NavigationView {
             Form {
                 Section {
-                    NavigationLink(destination: MultiSelectionView(editVM: MangaEditVM(manga: manga))) {
-//                                NavigationLink(value: manga) {
+                    NavigationLink(destination: MultiSelectionView(editVM: editVM)) {
                         HStack {
                             Text("Volúmenes: ")
                             Spacer()
-                            Text(manga.listOwnedVolumes)
+                            Text(editVM.listOwnedVolumes)
                                 .foregroundColor(.gray)
                                 .multilineTextAlignment(.trailing)
                         }
                     }
                 }
-                
                 Section {
-                    HStack {
-                        Text("Volumen en lectura:")
-//                        Picker("Composer", selection: $editVM.composer) {
-//                                            ForEach(vm.composers, id: \.self) { composer in
-//                                                Text(composer)
-//                                            }
-//                                        }
+                    Picker("Volumen en lectura:", selection: $editVM.readingVolume) {
+                        ForEach(editVM.sortOwnedVolumes, id: \.self) { volume in
+                            Text("\(volume)")
+                        }
                     }
+                    .padding(EdgeInsets(top: -5,leading: 0,bottom: -5,trailing: 0))
                 }
                 Section {
-                    HStack {
-                        Text("Colección completa:")
-                        
+                    Picker("Colección completa:", selection: $editVM.completeCollection) {
+                        Text("Si").tag(true)
+                        Text("No").tag(false)
                     }
+                    .padding(EdgeInsets(top: -5,leading: 0,bottom: -5,trailing: 0))
                 }
             }
-//            .navigationDestination(for: Manga.self) { manga in
-//                MultiSelectionView(editVM: MangaEditVM(manga: manga))
-//            }
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button {
+                        //                        if let manga = editVM.saveEditManga() {
+                        let manga = editVM.saveEditManga()
+                        vm.updateManga(manga: manga)
+                        dismiss()
+                        //                        }
+                    } label: {
+                        Text("Guardar")
+                    }
+                }
+                ToolbarItem(placement: .cancellationAction) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Text("Cancelar")
+                    }
+                    
+                }
+            }
         }
     }
 }
 
 #Preview {
-    AddMangaCollection(manga: .test)
+    NavigationStack {
+        AddMangaCollection(editVM: MangaEditVM(manga: .test))
+    }
 }
