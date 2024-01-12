@@ -162,4 +162,14 @@ final class MangaVM: ObservableObject {
             mangas[index].inCollection.toggle()
         }
     }
+    
+//    func toggleSelectionVolume(manga: Manga, volume: Int){
+//        if let index = mangas.firstIndex(where: { $0.id == manga.id}){
+//            if mangas[index].ownedVolumes.contains(volume) {
+//                mangas[index].ownedVolumes.remove(volume)
+//            } else {
+//                mangas[index].ownedVolumes.insert(volume)
+//            }
+//        }
+//    }
 }

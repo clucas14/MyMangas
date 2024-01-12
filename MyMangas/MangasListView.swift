@@ -12,6 +12,8 @@ import SwiftUI
 struct MangasListView: View {
     @EnvironmentObject var vm: MangaVM
     
+    @State var showAddCollection = false
+    
     var body: some View {
         ZStack {
             NavigationStack {
@@ -22,6 +24,7 @@ struct MangasListView: View {
                                 .swipeActions(edge: .leading) {
                                     Button {
                                         vm.toggleMyCollection(manga: manga)
+                                        showAddCollection.toggle()
                                     } label: {
                                         Label(manga.inCollection ? "Quitar de mi colección" : "Añadir a mi colección", systemImage: manga.inCollection ? "minus" : "plus")
                                     }
@@ -29,6 +32,9 @@ struct MangasListView: View {
                                 }
                                 .onAppear {
                                     vm.loadNextPage(manga: manga)
+                                }
+                                .sheet(isPresented: $showAddCollection) {
+                                    AddMangaCollection(manga: manga)
                                 }
                         }
                     }
