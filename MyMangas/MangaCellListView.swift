@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MangaCellView: View {
+struct MangaCellListView: View {
     var manga: Manga
     
     var body: some View {
@@ -19,13 +19,16 @@ struct MangaCellView: View {
                 Text(manga.status.capitalizedValue)
                     .font(.caption)
                     .opacity(0.6)
+                
             }
             Spacer()
+            Image(systemName: "character.book.closed.fill.ja")
+                .opacity(manga.inCollection ? 1 : 0)
             MangaCircleScoreView(manga: manga, circleSize: .small, progress: true)
         }
     }
 }
 
 #Preview {
-    MangaCellView(manga: .test)
+    MangaCellListView(manga: .test)
 }

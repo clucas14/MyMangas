@@ -8,9 +8,16 @@
 import Foundation
 
 final class MangaVM: ObservableObject {
-    let mangaInteractor: MangaInteractorProtocol
+    let mangaInteractor: MangaNetworkInteractorProtocol
+    let mangaDataInteractor: DataInteractor
     
     @Published var mangas: [Manga] = []
+    @Published var mangasCollection: [Manga] = [] {
+        didSet {
+            try? mangaDataInteractor.saveData(json: mangasCollection)
+        }
+    }
+    
     @Published var searchText = "" {
         willSet {
             page = 1
@@ -21,26 +28,34 @@ final class MangaVM: ObservableObject {
     }
     @Published var sortType: SortType = .nofilter {
         didSet {
-//            if sortType != .nofilter {
-                page = 1
-                Task {
-                    await sortedMangasByType(sortOption: sortOption)
-                }
-//            }
+            //            if sortType != .nofilter {
+            page = 1
+            Task {
+                await sortedMangasByType(sortOption: sortOption)
+            }
+            //            }
         }
     }
     @Published var sortOption = ""
     @Published var searchEmpty = false
     
-    var myCollection: [Manga] {
-        mangas.filter { $0.inCollection }
-    }
+//    var myCollection: [Manga] {
+//        mangas.filter { $0.inCollection }
+//    }
     
     var page = 1
     // Hay que calcular el total de páginas para que no pueda hacer una llamada a getmangas de una página que no existe
     
-    init(network: MangaInteractorProtocol = Network()) {
+    init(network: MangaNetworkInteractorProtocol = NetworkInteractor(), data: DataInteractor = MangaDataInteractor()) {
         self.mangaInteractor = network
+        self.mangaDataInteractor = data
+        //       Revisar esto, hay que meter el task en el do?¿ hay que hacerlo con el mostrado de errores
+        do {
+            mangasCollection = try mangaDataInteractor.loadData()
+        } catch {
+            print(error)
+            mangasCollection = []
+        }
         Task {
             await getMangas()
         }
@@ -157,25 +172,35 @@ final class MangaVM: ObservableObject {
         }
     }
     
-    func toggleMyCollection(manga: Manga) {
+    func removeMyCollection(manga: Manga) {
         if let index = mangas.firstIndex(where: { $0.id == manga.id }) {
             mangas[index].inCollection.toggle()
+            if let index = mangasCollection.firstIndex(where: { $0.id == manga.id }) {
+                mangasCollection.remove(at: index)
+            }
         }
     }
     
-//    func toggleSelectionVolume(manga: Manga, volume: Int){
-//        if let index = mangas.firstIndex(where: { $0.id == manga.id }) {
-//            if mangas[index].ownedVolumes.contains(volume) {
-//                mangas[index].ownedVolumes.remove(volume)
-//            } else {
-//                mangas[index].ownedVolumes.insert(volume)
-//            }
-//        }
-//    }
+    //    func toggleSelectionVolume(manga: Manga, volume: Int){
+    //        if let index = mangas.firstIndex(where: { $0.id == manga.id }) {
+    //            if mangas[index].ownedVolumes.contains(volume) {
+    //                mangas[index].ownedVolumes.remove(volume)
+    //            } else {
+    //                mangas[index].ownedVolumes.insert(volume)
+    //            }
+    //        }
+    //    }
     
-    func updateManga(manga: Manga) {
+    //    func updateManga(manga: Manga) {
+    //        if let index = mangas.firstIndex(where: { $0.id == manga.id }) {
+    //                mangas[index] = manga
+    //        }
+    //    }
+    
+    func addMyCollection(manga: Manga) {
         if let index = mangas.firstIndex(where: { $0.id == manga.id }) {
-                mangas[index] = manga
+            mangas[index].inCollection.toggle()
+            mangasCollection.append(manga)
         }
     }
 }

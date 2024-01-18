@@ -20,11 +20,11 @@ struct MangasListView: View {
                 List {
                     ForEach(vm.mangas) { manga in
                         NavigationLink(value: manga) {
-                            MangaCellView(manga: manga)
+                            MangaCellListView(manga: manga)
                                 .swipeActions(edge: .leading) {
                                     Button {
                                         if manga.inCollection {
-                                            vm.toggleMyCollection(manga: manga)
+                                            vm.removeMyCollection(manga: manga)
                                             //                                            Mensaje de si seguro que quiere eliminarlo
                                         } else {
                                             selectedManga = manga

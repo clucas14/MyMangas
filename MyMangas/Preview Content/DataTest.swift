@@ -34,7 +34,7 @@ extension MangaVM {
     static let test = MangaVM(network: DataTest())
 }
 
-struct DataTest: MangaInteractorProtocol {
+struct DataTest: MangaNetworkInteractorProtocol {
     let url = Bundle.main.url(forResource: "testMangas", withExtension: ".json")!
     
     func getMangas(page: Int) async throws -> [Manga] {

@@ -11,7 +11,7 @@ struct MangasTabView: View {
     
     var body: some View {
         TabView {
-            MangasCollectionView()
+            MangasGridView()
                 .tabItem {
                     Label("My collection", systemImage: "books.vertical")
                 }

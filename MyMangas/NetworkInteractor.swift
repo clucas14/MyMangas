@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol MangaInteractorProtocol {
+protocol MangaNetworkInteractorProtocol {
     func getMangas(page: Int) async throws -> [Manga]
     func searchMangas(page: Int, searchString: String) async throws -> [Manga]
     func getMangasByGenre(page: Int, sortOption: String) async throws -> [Manga]
@@ -15,7 +15,7 @@ protocol MangaInteractorProtocol {
     func getMangasByDemographic(page: Int, sortOption: String) async throws -> [Manga]
 }
 
-struct Network: MangaInteractorProtocol {
+struct NetworkInteractor: MangaNetworkInteractorProtocol {
     func getJSON<JSON>(request: URLRequest, type: JSON.Type) async throws -> JSON where JSON: Codable {
         let (data, response) = try await URLSession.shared.getData(for: request)
         

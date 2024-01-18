@@ -13,9 +13,9 @@ struct MangasCollectionView: View {
     var body: some View {
         NavigationStack {
             List {
-                ForEach(vm.myCollection) { manga in
+                ForEach(vm.mangasCollection) { manga in
                     NavigationLink(value: manga) {
-                        MangaCellView(manga: manga)
+                        MangaCellListView(manga: manga)
                     }
                 }
             }

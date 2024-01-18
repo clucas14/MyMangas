@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Manga: Hashable, Identifiable {    
+struct Manga: Hashable, Identifiable, Codable {    
     let id: Int
     let title: String
     let titleJapanese: String?
@@ -32,6 +32,13 @@ struct Manga: Hashable, Identifiable {
     //    let tomosComprados: Int?
     //    let tomoLectura: Int?
     
+//    var authorsString: String {
+//        let authorsCollection = authors.map{"\($0.firstName) \($0.lastName)"}
+//        return authorsCollection.formatted(.list(type: .and))
+//    }
+}
+
+extension Manga {
     var urlPicture: URL {
         URL(string: mainPicture.trimmingCharacters(in: CharacterSet(charactersIn: "\"")))!
     }
@@ -40,12 +47,6 @@ struct Manga: Hashable, Identifiable {
         score.formatted(.number.precision(.fractionLength(1)))
     }
     
-//    var authorsString: String {
-//        let authorsCollection = authors.map{"\($0.firstName) \($0.lastName)"}
-//        return authorsCollection.formatted(.list(type: .and))
-//    }
-    
-//Ponerlo como extensión?¿?¿
     var scoreColor: Color {
         switch score {
         case 6.5...10:
@@ -58,27 +59,26 @@ struct Manga: Hashable, Identifiable {
                 .green
         }
     }
-    
 }
 
-struct Author: Hashable, Identifiable {
+struct Author: Hashable, Identifiable, Codable {
     let role: AuthorRoles
     let lastName: String
     let id: String
     let firstName: String
 }
 
-struct Demographic: Hashable, Identifiable {
+struct Demographic: Hashable, Identifiable, Codable {
     let demographic: MangaDemographics
     let id: String
 }
 
-struct Genre: Hashable, Identifiable {
+struct Genre: Hashable, Identifiable, Codable {
     let genre: MangaGenres
     let id: String
 }
 
-struct Theme: Hashable, Identifiable {
+struct Theme: Hashable, Identifiable, Codable {
     let theme: MangaThemes
     let id: String
 }
