@@ -39,9 +39,9 @@ final class MangaVM: ObservableObject {
     @Published var sortOption = ""
     @Published var searchEmpty = false
     
-//    var myCollection: [Manga] {
-//        mangas.filter { $0.inCollection }
-//    }
+    //    var myCollection: [Manga] {
+    //        mangas.filter { $0.inCollection }
+    //    }
     
     var page = 1
     // Hay que calcular el total de páginas para que no pueda hacer una llamada a getmangas de una página que no existe
@@ -63,7 +63,7 @@ final class MangaVM: ObservableObject {
     
     func getMangas() async {
         do {
-            let mangs = try await mangaInteractor.getMangas(page: page)
+            let mangs = updateMangas(mangasNew: try await mangaInteractor.getMangas(page: page))
             await MainActor.run {
                 self.mangas += mangs
             }
@@ -71,6 +71,16 @@ final class MangaVM: ObservableObject {
         } catch {
             print(error)
         }
+    }
+    
+    func updateMangas(mangasNew: [Manga]) -> [Manga] {
+        var mangasN = mangasNew
+        for mangaCollec in mangasCollection {
+            if let index = mangasN.firstIndex(where: { $0.id == mangaCollec.id }) {
+                mangasN[index] = mangaCollec
+            }
+        }
+        return mangasN
     }
     
     func isLastItem(manga: Manga) -> Bool {
@@ -110,7 +120,7 @@ final class MangaVM: ObservableObject {
                         mangas.removeAll()
                     }
                 }
-                let mangs = try await mangaInteractor.searchMangas(page: page, searchString: searchText)
+                let mangs = updateMangas(mangasNew: try await mangaInteractor.searchMangas(page: page, searchString: searchText))
                 await MainActor.run {
                     if mangs.isEmpty {
                         searchEmpty = true
@@ -144,17 +154,20 @@ final class MangaVM: ObservableObject {
             }
             switch sortType {
             case .themes:
-                let mangs = try await mangaInteractor.getMangasByTheme(page: page, sortOption: sortOption)
+//                let mangs = try await mangaInteractor.getMangasByTheme(page: page, sortOption: sortOption)
+                let mangs = updateMangas(mangasNew: try await mangaInteractor.getMangasByTheme(page: page, sortOption: sortOption))
                 await MainActor.run {
                     self.mangas += mangs
                 }
             case .genres:
-                let mangs = try await mangaInteractor.getMangasByGenre(page: page, sortOption: sortOption)
+//                let mangs = try await mangaInteractor.getMangasByGenre(page: page, sortOption: sortOption)
+                let mangs = updateMangas(mangasNew: try await mangaInteractor.getMangasByGenre(page: page, sortOption: sortOption))
                 await MainActor.run {
                     self.mangas += mangs
                 }
             case .demographics:
-                let mangs = try await mangaInteractor.getMangasByDemographic(page: page, sortOption: sortOption)
+//                let mangs = try await mangaInteractor.getMangasByDemographic(page: page, sortOption: sortOption)
+                let mangs = updateMangas(mangasNew: try await mangaInteractor.getMangasByDemographic(page: page, sortOption: sortOption))
                 await MainActor.run {
                     self.mangas += mangs
                 }
