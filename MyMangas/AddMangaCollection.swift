@@ -48,9 +48,10 @@ struct AddMangaCollection: View {
                 ToolbarItem(placement: .confirmationAction) {
                     Button {
                         //                        if let manga = editVM.saveEditManga() {
-                        let manga = editVM.saveEditManga()
-                        vm.addMyCollection(manga: manga)
-                        dismiss()
+                        if let manga = editVM.validateManga() {
+                            vm.addMyCollection(manga: manga)
+                            dismiss()
+                        }
                         //                        }
                     } label: {
                         Text("Guardar")
@@ -65,6 +66,13 @@ struct AddMangaCollection: View {
                     
                 }
             }
+            .alert("Validation error",
+                   isPresented: $editVM.showAlert) {
+                
+            } message: {
+                Text(editVM.msg)
+            }
+
         }
     }
 }

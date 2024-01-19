@@ -15,6 +15,9 @@ final class MangaEditVM: ObservableObject {
     
     var manga: Manga
     
+    @Published var msg = ""
+    @Published var showAlert = false
+    
     var sortOwnedVolumes: [Int] {
         ownedVolumes.sorted()
     }
@@ -43,7 +46,38 @@ final class MangaEditVM: ObservableObject {
             }
         }
 
-    func saveEditManga() -> Manga {
-        Manga(id: manga.id, title: manga.title, titleJapanese: manga.titleJapanese, score: manga.score, mainPicture: manga.mainPicture, chapters: manga.chapters, volumes: manga.volumes, status: manga.status, sypnosis: manga.sypnosis, startDate: manga.startDate, endDate: manga.endDate, url: manga.url, authors: manga.authors, demographics: manga.demographics, genres: manga.genres, themes: manga.themes, inCollection: true, ownedVolumes: ownedVolumes, readingVolume: readingVolume, completeCollection: completeCollection)
+//    func saveEditManga() -> Manga {
+//        Manga(id: manga.id, title: manga.title, titleJapanese: manga.titleJapanese, score: manga.score, mainPicture: manga.mainPicture, chapters: manga.chapters, volumes: manga.volumes, status: manga.status, sypnosis: manga.sypnosis, startDate: manga.startDate, endDate: manga.endDate, url: manga.url, authors: manga.authors, demographics: manga.demographics, genres: manga.genres, themes: manga.themes, inCollection: true, ownedVolumes: ownedVolumes, readingVolume: readingVolume, completeCollection: completeCollection)
+//    }
+    
+    func validateManga() -> Manga? {
+        var message = ""
+        
+        if  ownedVolumes.count == 0 && manga.volumes != nil {
+            message += "Debes seleccionar al menos un volumen.\n"
+        }
+        if completeCollection == true {
+            if ownedVolumes.count != manga.volumes && manga.volumes != nil {
+                message += "No tienes todos los volúmenes seleccionados y por tanto no puedes tener la colección completa.\n"
+            } else {
+                switch manga.status {
+                case .currentlyPublishing:
+                    message += "No se puede marcar como completa la colección ya que el manga está actualmente en publicación y no está finalizado.\n"
+                case .finished:
+                    return Manga(id: manga.id, title: manga.title, titleJapanese: manga.titleJapanese, score: manga.score, mainPicture: manga.mainPicture, chapters: manga.chapters, volumes: manga.volumes, status: manga.status, sypnosis: manga.sypnosis, startDate: manga.startDate, endDate: manga.endDate, url: manga.url, authors: manga.authors, demographics: manga.demographics, genres: manga.genres, themes: manga.themes, inCollection: true, ownedVolumes: ownedVolumes, readingVolume: readingVolume, completeCollection: completeCollection)
+                case .onHiatus:
+                    message += "No se puede marcar como completa la colección ya que la publicación del manga está pausada y no está finalizada.\n"
+                case .discontinued:
+                    return Manga(id: manga.id, title: manga.title, titleJapanese: manga.titleJapanese, score: manga.score, mainPicture: manga.mainPicture, chapters: manga.chapters, volumes: manga.volumes, status: manga.status, sypnosis: manga.sypnosis, startDate: manga.startDate, endDate: manga.endDate, url: manga.url, authors: manga.authors, demographics: manga.demographics, genres: manga.genres, themes: manga.themes, inCollection: true, ownedVolumes: ownedVolumes, readingVolume: readingVolume, completeCollection: completeCollection)
+                }
+            }
+        }
+        if message.isEmpty {
+            return Manga(id: manga.id, title: manga.title, titleJapanese: manga.titleJapanese, score: manga.score, mainPicture: manga.mainPicture, chapters: manga.chapters, volumes: manga.volumes, status: manga.status, sypnosis: manga.sypnosis, startDate: manga.startDate, endDate: manga.endDate, url: manga.url, authors: manga.authors, demographics: manga.demographics, genres: manga.genres, themes: manga.themes, inCollection: true, ownedVolumes: ownedVolumes, readingVolume: readingVolume, completeCollection: completeCollection)
+        } else {
+            self.msg = String(message.dropLast())
+            self.showAlert.toggle()
+            return nil
+        }
     }
 }
