@@ -23,7 +23,7 @@ struct MangaCircleScoreView: View {
             Circle()
                 .trim(from: 0, to: 10)
                 .stroke(style: StrokeStyle(lineWidth: circleSize == .large ? 8 : 5, lineCap: .round))
-                .foregroundStyle(.black)
+                .foregroundStyle(.gray)
                 .overlay(
                     Circle()
                         .trim(from: 0.0, to: progress ? (manga.score/10) : 0)
@@ -35,6 +35,7 @@ struct MangaCircleScoreView: View {
                 .background {
                     Circle()
                         .fill(Color.black)
+                        .opacity(0.7)
                 }
                 .padding()
                 .frame(width: circleSize == .large ? 100 : 80)

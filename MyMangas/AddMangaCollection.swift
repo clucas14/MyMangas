@@ -49,7 +49,11 @@ struct AddMangaCollection: View {
                     Button {
                         //                        if let manga = editVM.saveEditManga() {
                         if let manga = editVM.validateManga() {
-                            vm.addMyCollection(manga: manga)
+                            if manga.inCollection {
+                                vm.updateManga(manga: manga)
+                            } else {
+                                vm.addMyCollection(manga: manga)
+                            }
                             dismiss()
                         }
                         //                        }

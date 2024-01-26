@@ -19,22 +19,23 @@ struct MangaCellGridView: View {
                     image
                         .resizable()
                         .scaledToFill()
+                        .frame(width: 150, height: 200)
                         .clipShape(RoundedRectangle(cornerRadius: 6))
                         .padding()
                 } placeholder: {
                     Image(systemName: "book.pages")
-                    .resizable()
-                    .scaledToFill()
-                    .background(.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 6))
-                    .padding()
+                        .resizable()
+                        .scaledToFill()
+                        .background(.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 6))
+                        .padding()
                 }
                 
-                HStack {
-                    VStack(alignment: .leading) {
+                HStack(alignment: .top) {
+                    VStack {
                         Text(manga.title)
                             .font(.headline)
-                            .lineLimit(2)
+                            .lineLimit(2, reservesSpace: true)
 //                        Text(manga.status.capitalizedValue)
 //                            .font(.caption)
 //                            .padding(.top, -20)
@@ -44,7 +45,7 @@ struct MangaCellGridView: View {
                     Button {
                         vm.removeMyCollection(manga: manga)
                     } label: {
-                        Image(systemName: manga.inCollection ? "character.book.closed.fill.ja" : "character.book.closed.ja")
+                        Image(systemName: "character.book.closed.fill.ja")
                     }
                     .tint(.yellow)
                     .padding(.trailing, 15)

@@ -24,7 +24,7 @@ struct MangasGridView: View {
                 .navigationDestination(for: Manga.self) { manga in
                     MangaDetailView(manga: manga)
                 }
-                .navigationTitle("Mi colección")
+                .navigationTitle("My collection")
 //                .toolbar {
 //                    ToolbarItem(placement: .topBarTrailing) {
 //                        Button {

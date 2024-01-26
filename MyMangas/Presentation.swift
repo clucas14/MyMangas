@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Manga: Hashable, Identifiable, Codable {    
+struct Manga: Hashable, Identifiable, Codable {
     let id: Int
     let title: String
     let titleJapanese: String?
@@ -32,13 +32,39 @@ struct Manga: Hashable, Identifiable, Codable {
     //    let tomosComprados: Int?
     //    let tomoLectura: Int?
     
-//    var authorsString: String {
-//        let authorsCollection = authors.map{"\($0.firstName) \($0.lastName)"}
-//        return authorsCollection.formatted(.list(type: .and))
-//    }
+    
 }
 
 extension Manga {
+    var listOwnedVolumes: String {
+        let stringOwnedVolumes = ownedVolumes.sorted().map{"\($0)"}
+        return stringOwnedVolumes.formatted(.list(type: .and))
+    }
+    
+    var listDemographics: String {
+        let demographicsCollection = demographics.map{"\($0.demographic.rawValue)"}
+        return demographicsCollection.formatted(.list(type: .and))
+    }
+    
+    var listThemes: String {
+        let themesCollection = themes.map{"\($0.theme.rawValue)"}
+        return themesCollection.formatted(.list(type: .and))
+    }
+    
+    var listAuthors: String {
+        let authorsCollection = authors.map{"\($0.firstName) \($0.lastName)"}
+        return authorsCollection.formatted(.list(type: .and))
+    }
+    
+    var stringCompleteCollection: String {
+        switch completeCollection {
+        case true:
+            "Yes"
+        case false:
+            "No"
+        }
+    }
+    
     var urlPicture: URL {
         URL(string: mainPicture.trimmingCharacters(in: CharacterSet(charactersIn: "\"")))!
     }

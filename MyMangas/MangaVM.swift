@@ -154,19 +154,19 @@ final class MangaVM: ObservableObject {
             }
             switch sortType {
             case .themes:
-//                let mangs = try await mangaInteractor.getMangasByTheme(page: page, sortOption: sortOption)
+                //                let mangs = try await mangaInteractor.getMangasByTheme(page: page, sortOption: sortOption)
                 let mangs = updateMangas(mangasNew: try await mangaInteractor.getMangasByTheme(page: page, sortOption: sortOption))
                 await MainActor.run {
                     self.mangas += mangs
                 }
             case .genres:
-//                let mangs = try await mangaInteractor.getMangasByGenre(page: page, sortOption: sortOption)
+                //                let mangs = try await mangaInteractor.getMangasByGenre(page: page, sortOption: sortOption)
                 let mangs = updateMangas(mangasNew: try await mangaInteractor.getMangasByGenre(page: page, sortOption: sortOption))
                 await MainActor.run {
                     self.mangas += mangs
                 }
             case .demographics:
-//                let mangs = try await mangaInteractor.getMangasByDemographic(page: page, sortOption: sortOption)
+                //                let mangs = try await mangaInteractor.getMangasByDemographic(page: page, sortOption: sortOption)
                 let mangs = updateMangas(mangasNew: try await mangaInteractor.getMangasByDemographic(page: page, sortOption: sortOption))
                 await MainActor.run {
                     self.mangas += mangs
@@ -204,11 +204,14 @@ final class MangaVM: ObservableObject {
     //        }
     //    }
     
-    //    func updateManga(manga: Manga) {
-    //        if let index = mangas.firstIndex(where: { $0.id == manga.id }) {
-    //                mangas[index] = manga
-    //        }
-    //    }
+    func updateManga(manga: Manga) {
+        if let index = mangas.firstIndex(where: { $0.id == manga.id }) {
+            mangas[index] = manga
+        }
+        if let index = mangasCollection.firstIndex(where: { $0.id == manga.id }) {
+            mangasCollection[index] = manga
+        }
+    }
     
     func addMyCollection(manga: Manga) {
         if let index = mangas.firstIndex(where: { $0.id == manga.id }) {

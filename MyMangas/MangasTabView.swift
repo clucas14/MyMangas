@@ -13,11 +13,12 @@ struct MangasTabView: View {
         TabView {
             MangasGridView()
                 .tabItem {
-                    Label("My collection", systemImage: "books.vertical")
+//                    Label("My collection", systemImage: "books.vertical")
+                    Label("My collection", systemImage: "character.book.closed.fill.ja")
                 }
             MangasListView()
                 .tabItem {
-                    Label("Mangas", systemImage: "book")
+                    Label("Mangas", systemImage: "books.vertical")
                 }
         }
     }
