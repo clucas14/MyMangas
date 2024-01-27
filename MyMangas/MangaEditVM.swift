@@ -5,7 +5,7 @@
 //  Created by Carlos Lucas Sánchez on 11/1/24.
 //
 
-import Foundation
+import SwiftUI
 
 final class MangaEditVM: ObservableObject {
     
@@ -13,7 +13,7 @@ final class MangaEditVM: ObservableObject {
     @Published var readingVolume: Int
     @Published var completeCollection: Bool
     
-    var manga: Manga
+    @Published var manga: Manga
     
     @Published var msg = ""
     @Published var showAlert = false
@@ -64,16 +64,19 @@ final class MangaEditVM: ObservableObject {
                 case .currentlyPublishing:
                     message += "No se puede marcar como completa la colección ya que el manga está actualmente en publicación y no está finalizado.\n"
                 case .finished:
-                    return Manga(id: manga.id, title: manga.title, titleJapanese: manga.titleJapanese, score: manga.score, mainPicture: manga.mainPicture, chapters: manga.chapters, volumes: manga.volumes, status: manga.status, sypnosis: manga.sypnosis, startDate: manga.startDate, endDate: manga.endDate, url: manga.url, authors: manga.authors, demographics: manga.demographics, genres: manga.genres, themes: manga.themes, inCollection: true, ownedVolumes: ownedVolumes, readingVolume: readingVolume, completeCollection: completeCollection)
+                    manga = Manga(id: manga.id, title: manga.title, titleJapanese: manga.titleJapanese, score: manga.score, mainPicture: manga.mainPicture, chapters: manga.chapters, volumes: manga.volumes, status: manga.status, sypnosis: manga.sypnosis, startDate: manga.startDate, endDate: manga.endDate, url: manga.url, authors: manga.authors, demographics: manga.demographics, genres: manga.genres, themes: manga.themes, inCollection: manga.inCollection, ownedVolumes: ownedVolumes, readingVolume: readingVolume, completeCollection: completeCollection)
+                    return manga
                 case .onHiatus:
                     message += "No se puede marcar como completa la colección ya que la publicación del manga está pausada y no está finalizada.\n"
                 case .discontinued:
-                    return Manga(id: manga.id, title: manga.title, titleJapanese: manga.titleJapanese, score: manga.score, mainPicture: manga.mainPicture, chapters: manga.chapters, volumes: manga.volumes, status: manga.status, sypnosis: manga.sypnosis, startDate: manga.startDate, endDate: manga.endDate, url: manga.url, authors: manga.authors, demographics: manga.demographics, genres: manga.genres, themes: manga.themes, inCollection: true, ownedVolumes: ownedVolumes, readingVolume: readingVolume, completeCollection: completeCollection)
+                    manga = Manga(id: manga.id, title: manga.title, titleJapanese: manga.titleJapanese, score: manga.score, mainPicture: manga.mainPicture, chapters: manga.chapters, volumes: manga.volumes, status: manga.status, sypnosis: manga.sypnosis, startDate: manga.startDate, endDate: manga.endDate, url: manga.url, authors: manga.authors, demographics: manga.demographics, genres: manga.genres, themes: manga.themes, inCollection: manga.inCollection, ownedVolumes: ownedVolumes, readingVolume: readingVolume, completeCollection: completeCollection)
+                    return manga
                 }
             }
         }
         if message.isEmpty {
-            return Manga(id: manga.id, title: manga.title, titleJapanese: manga.titleJapanese, score: manga.score, mainPicture: manga.mainPicture, chapters: manga.chapters, volumes: manga.volumes, status: manga.status, sypnosis: manga.sypnosis, startDate: manga.startDate, endDate: manga.endDate, url: manga.url, authors: manga.authors, demographics: manga.demographics, genres: manga.genres, themes: manga.themes, inCollection: true, ownedVolumes: ownedVolumes, readingVolume: readingVolume, completeCollection: completeCollection)
+            manga = Manga(id: manga.id, title: manga.title, titleJapanese: manga.titleJapanese, score: manga.score, mainPicture: manga.mainPicture, chapters: manga.chapters, volumes: manga.volumes, status: manga.status, sypnosis: manga.sypnosis, startDate: manga.startDate, endDate: manga.endDate, url: manga.url, authors: manga.authors, demographics: manga.demographics, genres: manga.genres, themes: manga.themes, inCollection: manga.inCollection, ownedVolumes: ownedVolumes, readingVolume: readingVolume, completeCollection: completeCollection)
+            return manga
         } else {
             self.msg = String(message.dropLast())
             self.showAlert.toggle()

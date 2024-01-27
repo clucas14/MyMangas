@@ -1,16 +1,17 @@
 //
-//  MultiSelector.swift
+//  UpdateMangaCollection.swift
 //  MyMangas
 //
-//  Created by Carlos Lucas Sánchez on 11/1/24.
+//  Created by Carlos Lucas Sánchez on 27/1/24.
 //
 
 import SwiftUI
 
-struct AddMangaCollection: View {
+struct UpdateMangaCollection: View {
     
     @ObservedObject var editVM: MangaEditVM
     @EnvironmentObject var vm: MangaVM
+    @Binding var manga: Manga
     
     @Environment(\.dismiss) var dismiss
     
@@ -48,6 +49,7 @@ struct AddMangaCollection: View {
                 ToolbarItem(placement: .confirmationAction) {
                     Button {
                         if let mang = editVM.validateManga() {
+                            manga = mang
                             if mang.inCollection {
                                 vm.updateManga(manga: mang)
                             } else {
@@ -81,6 +83,7 @@ struct AddMangaCollection: View {
 
 #Preview {
     NavigationStack {
-        AddMangaCollection(editVM: MangaEditVM(manga: .test))
+        UpdateMangaCollection(editVM: MangaEditVM(manga: .test), manga: Binding.constant(.test))
     }
 }
+

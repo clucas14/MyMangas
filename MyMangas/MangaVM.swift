@@ -216,7 +216,7 @@ final class MangaVM: ObservableObject {
     func addMyCollection(manga: Manga) {
         if let index = mangas.firstIndex(where: { $0.id == manga.id }) {
             mangas[index].inCollection.toggle()
-            mangasCollection.append(manga)
+            mangasCollection.append(mangas[index])
         }
     }
 }

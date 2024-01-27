@@ -37,6 +37,7 @@
 		4AE4485B2B500CCE001B07DB /* MangaEditVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE4485A2B500CCE001B07DB /* MangaEditVM.swift */; };
 		4AEC46672B59B64800F6A351 /* mangacollection.json in Resources */ = {isa = PBXBuildFile; fileRef = 4AEC46662B59B64800F6A351 /* mangacollection.json */; };
 		4AF818AD2B51F3F0007AFE92 /* DataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF818AC2B51F3F0007AFE92 /* DataInteractor.swift */; };
+		4AFB69B72B65474000E43AFC /* UpdateMangaCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFB69B62B65474000E43AFC /* UpdateMangaCollection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +72,7 @@
 		4AE4485A2B500CCE001B07DB /* MangaEditVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaEditVM.swift; sourceTree = "<group>"; };
 		4AEC46662B59B64800F6A351 /* mangacollection.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mangacollection.json; sourceTree = "<group>"; };
 		4AF818AC2B51F3F0007AFE92 /* DataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataInteractor.swift; sourceTree = "<group>"; };
+		4AFB69B62B65474000E43AFC /* UpdateMangaCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMangaCollection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				4A8D02D32B389A10007413E5 /* MangasCollectionView.swift */,
 				4A46D98D2B3756E200729288 /* MangaDetailView.swift */,
 				4AE448562B4FEEE1001B07DB /* AddMangaCollection.swift */,
+				4AFB69B62B65474000E43AFC /* UpdateMangaCollection.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				4A46D98C2B3755A900729288 /* MangaCellListView.swift in Sources */,
 				4A4142F12B34C2EF000DA882 /* MangaVM.swift in Sources */,
 				4A9242CF2B32209300CF07F7 /* URL.swift in Sources */,
+				4AFB69B72B65474000E43AFC /* UpdateMangaCollection.swift in Sources */,
 				4A9242D12B3221B200CF07F7 /* URLRequest.swift in Sources */,
 				4A9242DA2B3225F700CF07F7 /* DateFormatterExtension.swift in Sources */,
 			);

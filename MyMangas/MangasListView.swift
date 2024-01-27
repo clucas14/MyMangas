@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// Si la búsqueda no devuelve nada mostrar algo
-
 struct MangasListView: View {
     @EnvironmentObject var vm: MangaVM
     
@@ -48,9 +46,9 @@ struct MangasListView: View {
                     MangaDetailView(manga: manga)
                 }
                 .sheet(item: $selectedManga, content: { manga in
-                    AddMangaCollection(editVM: MangaEditVM(manga: manga))
-                        .presentationDetents([.medium])
-                        .interactiveDismissDisabled()
+                        AddMangaCollection(editVM: MangaEditVM(manga: manga))
+                            .presentationDetents([.medium])
+                            .interactiveDismissDisabled()
                 })
                 .onChange(of: vm.searchText) { _, newValue in
                     // Para evitar que se ponga a buscar antes de completar el texto de búsqueda si se escribe muy rápido
