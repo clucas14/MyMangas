@@ -62,17 +62,16 @@ struct MangasListView: View {
             }
             if vm.mangas.isEmpty {
                 if #available(iOS 17.0, *) {
-                    if vm.searchEmpty {
-                        VStack {
-                            ContentUnavailableView.search
-                        }
-                    }
+                    ContentUnavailableView.search
                 } else {
                     VStack {
-                        Text("Check the spelling or try a new search.")
-                            .bold()
                         Image(systemName: "magnifyingglass")
+                            .font(.largeTitle)
+                        Text("No Results")
                             .font(.title)
+                            .bold()
+                        Text("Check the spelling or try a new search.")
+                            .font(.caption)
                     }
                 }
             }
