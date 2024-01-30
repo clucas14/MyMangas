@@ -13,7 +13,6 @@ struct MangasTabView: View {
         TabView {
             MangasGridView()
                 .tabItem {
-//                    Label("My collection", systemImage: "books.vertical")
                     Label("My collection", systemImage: "character.book.closed.fill.ja")
                 }
             MangasListView()
