@@ -46,9 +46,9 @@ struct MangasListView: View {
                     MangaDetailView(manga: manga)
                 }
                 .sheet(item: $selectedManga, content: { manga in
-                        AddMangaCollection(editVM: MangaEditVM(manga: manga))
-                            .presentationDetents([.medium])
-                            .interactiveDismissDisabled()
+                    AddMangaCollection(editVM: MangaEditVM(manga: manga))
+                        .presentationDetents([.medium])
+                        .interactiveDismissDisabled()
                 })
                 .onChange(of: vm.searchText) { _, newValue in
                     // Para evitar que se ponga a buscar antes de completar el texto de búsqueda si se escribe muy rápido
@@ -60,13 +60,22 @@ struct MangasListView: View {
                     }
                 }
             }
-            VStack {
-                Text("No hay resultados en la búsqueda")
-                    .bold()
-                Image(systemName: "magnifyingglass")
-                    .font(.title)
+            if vm.searchEmpty {
+                if #available(iOS 17.0, *) {
+                    if vm.searchEmpty {
+                        VStack {
+                            ContentUnavailableView.search
+                        }
+                    }
+                } else {
+                    VStack {
+                        Text("No hay resultados en la búsqueda")
+                            .bold()
+                        Image(systemName: "magnifyingglass")
+                            .font(.title)
+                    }
+                }
             }
-            .opacity(vm.searchEmpty ? 1 : 0)
         }
     }
 }
