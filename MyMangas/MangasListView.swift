@@ -69,7 +69,7 @@ struct MangasListView: View {
                     }
                 } else {
                     VStack {
-                        Text("No hay resultados en la búsqueda")
+                        Text("Check the spelling or try a new search.")
                             .bold()
                         Image(systemName: "magnifyingglass")
                             .font(.title)
