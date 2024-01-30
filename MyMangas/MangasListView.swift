@@ -60,7 +60,7 @@ struct MangasListView: View {
                     }
                 }
             }
-            if vm.searchEmpty {
+            if vm.mangas.isEmpty {
                 if #available(iOS 17.0, *) {
                     if vm.searchEmpty {
                         VStack {
