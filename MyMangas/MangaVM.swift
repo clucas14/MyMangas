@@ -37,7 +37,7 @@ final class MangaVM: ObservableObject {
         }
     }
     @Published var sortOption = ""
-//    @Published var searchEmpty = false
+    @Published var searchEmpty = false
     
     //    var myCollection: [Manga] {
     //        mangas.filter { $0.inCollection }
@@ -122,11 +122,11 @@ final class MangaVM: ObservableObject {
                 }
                 let mangs = updateMangas(mangasNew: try await mangaInteractor.searchMangas(page: page, searchString: searchText))
                 await MainActor.run {
-//                    if mangs.isEmpty {
-//                        searchEmpty = true
-//                    } else {
-//                        searchEmpty = false
-//                    }
+                    if mangs.isEmpty && page == 1 {
+                        searchEmpty = true
+                    } else {
+                        searchEmpty = false
+                    }
                     self.mangas += mangs
                 }
             } catch {
@@ -136,7 +136,7 @@ final class MangaVM: ObservableObject {
         } else {
             await MainActor.run {
                 mangas.removeAll()
-//                searchEmpty = false
+                searchEmpty = false
             }
             page = 1
             Task {

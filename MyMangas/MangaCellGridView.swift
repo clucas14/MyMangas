@@ -14,7 +14,6 @@ struct MangaCellGridView: View {
     var body: some View {
         NavigationLink(value: manga) {
             VStack(alignment: .leading) {
-                
                 AsyncImage(url: manga.urlPicture) { image in
                     image
                         .resizable()
@@ -30,7 +29,6 @@ struct MangaCellGridView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 6))
                         .padding()
                 }
-                
                 HStack(alignment: .top) {
                     VStack {
                         Text(manga.title)

@@ -60,7 +60,7 @@ struct MangasListView: View {
                     }
                 }
             }
-            if vm.mangas.isEmpty {
+            if vm.searchEmpty {
                 if #available(iOS 17.0, *) {
                     ContentUnavailableView.search
                 } else {

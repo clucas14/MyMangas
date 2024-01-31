@@ -18,7 +18,7 @@ struct MangasGridView: View {
                 VStack {
                     if #available(iOS 17.0, *) {
                         ContentUnavailableView {
-                            Label("Empty collection", systemImage: "books.vertical")
+                            Label("Empty collection", systemImage: "character.book.closed.fill.ja")
                         } description: {
                             Text("You do not have any manga in your collection.")
                         }

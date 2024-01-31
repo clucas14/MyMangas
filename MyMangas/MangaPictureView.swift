@@ -21,13 +21,15 @@ struct MangaPictureView: View {
             image
                 .resizable()
                 .scaledToFill()
-                .frame(width: size.rawValue/1.5, height: size.rawValue)
-                .clipShape(RoundedRectangle(cornerRadius: size == .detailPicture ? 20 : 10))                
+                .frame(width: size.rawValue/1.5, height: size.rawValue)  
+                .clipShape(RoundedRectangle(cornerRadius: size == .detailPicture ? 20 : 10))
+                .shadow(color: .black.opacity(0.3), radius: 5, x: 0, y: 5)
         } placeholder: {
             Image(systemName: "book.pages")
                 .resizable()
                 .scaledToFit()
                 .frame(width: size.rawValue/1.5, height: size.rawValue)
+                .shadow(color: .black.opacity(0.3), radius: 5, x: 0, y: 5)
         }
     }
 }

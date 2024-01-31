@@ -10,11 +10,9 @@ import SwiftUI
 struct MangaDetailView: View {
     @State var expandedGenres = false
     @State var expandedCollection = false
-    
-    @State var isPresentedEdit = false
-    
     @State var expandedSypnosis = false
-    
+    @State var isPresentedEdit = false
+
     @State var manga: Manga
     
     var body: some View {
@@ -81,7 +79,7 @@ struct MangaDetailView: View {
                 } label: {
                     Text("Editar")
                 }
-                .buttonStyle(.bordered)
+                .buttonStyle(.borderedProminent)
             }
             .opacity(manga.inCollection ? 1 : 0)
         }
