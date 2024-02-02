@@ -59,30 +59,14 @@ fileprivate struct SortedButton: ViewModifier {
                         } label: {
                             Text(SortType.demographics.rawValue)
                         }
-//                        Menu {
-//                            ForEach(vm.authors) {author in
-//                                Button {
-//                                    sortOption = author.id
-//                                    sortType = .authors
-//                                } label: {
-//                                    Text(author.fullName)
-//                                }
-//                            }
-//                        } label: {
-//                            Text(SortType.authors.rawValue)
-//                        }
                         Button {
                             vm.isPresentedSearchAuthors = true
                             
                         } label: {
                             Text(SortType.authors.rawValue)
                         }
-//                        NavigationLink(destination: AuthorsSearchView()) {
-//                                            Text(SortType.authors.rawValue)
-//                                        }
                     } label: {
                         Image(systemName: "line.3.horizontal.decrease.circle")
-//                        Text("Filtrar por: \(sortType.rawValue) -> \(sortOption)")
                     }
                 }
             }

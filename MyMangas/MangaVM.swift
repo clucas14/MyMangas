@@ -28,20 +28,14 @@ final class MangaVM: ObservableObject {
     }
     @Published var sortType: SortType = .nofilter {
         didSet {
-            //            if sortType != .nofilter {
             page = 1
             Task {
                 await sortedMangasByType(sortOption: sortOption)
             }
-            //            }
         }
     }
     @Published var sortOption = ""
     @Published var searchEmpty = false
-    
-    //    var myCollection: [Manga] {
-    //        mangas.filter { $0.inCollection }
-    //    }
     
     var allAuthors : [Author] = []
     
@@ -56,20 +50,13 @@ final class MangaVM: ObservableObject {
             isPresentedAuthors = true
             filteredAuthors = allAuthors.filter { $0.fullName.localizedCaseInsensitiveContains(searchTextAuthors) }
         }
-//        willSet {
-//            page = 1
+        willSet {
+            page = 1
 //            if sortType != .nofilter {
 //                sortType = .nofilter
 //            }
-//        }
+        }
     }
-    
-    
-//    var authors : [Author] {
-//        Task {
-//            try await mangaInteractor.getAuthors
-//        }
-//    }
     
     var page = 1
     // Hay que calcular el total de páginas para que no pueda hacer una llamada a getmangas de una página que no existe
@@ -145,7 +132,7 @@ final class MangaVM: ObservableObject {
                 }
             case .authors:
                 Task {
-                    await searchMangasByAuthor(sortOption: sortOption)
+                    await sortedMangasByType(sortOption: sortOption)
                 }
             case .nofilter:
                 Task {
@@ -258,10 +245,10 @@ final class MangaVM: ObservableObject {
             case .nofilter:
                 await MainActor.run {
                     mangas.removeAll()
+                    isPresentedSearchAuthors = false
+                    isPresentedAuthors = false
                 }
                 page = 1
-                isPresentedSearchAuthors = false
-                isPresentedAuthors = false
                 Task {
                     await getMangas()
                 }
@@ -279,17 +266,7 @@ final class MangaVM: ObservableObject {
             }
         }
     }
-    
-    //    func toggleSelectionVolume(manga: Manga, volume: Int){
-    //        if let index = mangas.firstIndex(where: { $0.id == manga.id }) {
-    //            if mangas[index].ownedVolumes.contains(volume) {
-    //                mangas[index].ownedVolumes.remove(volume)
-    //            } else {
-    //                mangas[index].ownedVolumes.insert(volume)
-    //            }
-    //        }
-    //    }
-    
+        
     func updateManga(manga: Manga) {
         if let index = mangas.firstIndex(where: { $0.id == manga.id }) {
             mangas[index] = manga

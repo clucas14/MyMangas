@@ -62,7 +62,7 @@ struct MangasListView: View {
                     }
                 }
             }
-            if !vm.searchTextAuthors.isEmpty && vm.isPresentedAuthors && !vm.searchEmpty {
+            if !vm.searchTextAuthors.isEmpty && vm.isPresentedAuthors {
                 List {
                 ForEach(vm.filteredAuthors) { author in
                     Text(author.fullName)
