@@ -41,4 +41,12 @@ extension URLRequest {
         print(request.url!)
         return request
     }
+    
+    static func getAuthors(url: URL) -> URLRequest {
+        var request = URLRequest(url: url)
+        request.timeoutInterval = 60
+        request.httpMethod = "GET"
+        print(request.url!)
+        return request
+    }
 }

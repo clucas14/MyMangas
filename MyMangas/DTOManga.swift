@@ -18,6 +18,8 @@ struct Metadata: Codable {
     let page: Int
 }
 
+typealias Authors = [AuthorDTO]
+
 struct AuthorDTO: Codable {
     let role: AuthorRoles
     let lastName: String

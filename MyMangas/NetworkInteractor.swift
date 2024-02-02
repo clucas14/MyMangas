@@ -9,10 +9,12 @@ import Foundation
 
 protocol MangaNetworkInteractorProtocol {
     func getMangas(page: Int) async throws -> [Manga]
+    func getAuthors() async throws -> [Author]
     func searchMangas(page: Int, searchString: String) async throws -> [Manga]
     func getMangasByGenre(page: Int, sortOption: String) async throws -> [Manga]
     func getMangasByTheme(page: Int, sortOption: String) async throws -> [Manga]
     func getMangasByDemographic(page: Int, sortOption: String) async throws -> [Manga]
+    func getMangasByAuthor(page: Int, sortOption: String) async throws -> [Manga]
 }
 
 struct NetworkInteractor: MangaNetworkInteractorProtocol {
@@ -38,6 +40,10 @@ struct NetworkInteractor: MangaNetworkInteractorProtocol {
         try await getJSON(request: .get(url: .getMangasURL, page: page), type: DTOMangasResult.self).items.map(\.toPresentation)
     }
     
+    func getAuthors() async throws -> [Author] {
+        try await getJSON(request: .getAuthors(url: .getAuthorsURL), type: Authors.self).map(\.toPresentation)
+    }
+    
     func searchMangas(page: Int, searchString: String) async throws -> [Manga] {
         try await getJSON(request: .get(url: .searchMangasURL, page: page, string: searchString), type: DTOMangasResult.self).items.map(\.toPresentation)
     }
@@ -52,5 +58,9 @@ struct NetworkInteractor: MangaNetworkInteractorProtocol {
     
     func getMangasByDemographic(page: Int, sortOption: String) async throws -> [Manga] {
         try await getJSON(request: .get(url: .getMangasByDemographicURL, page: page, string: sortOption), type: DTOMangasResult.self).items.map(\.toPresentation)
+    }
+    
+    func getMangasByAuthor(page: Int, sortOption: String) async throws -> [Manga] {
+        try await getJSON(request: .get(url: .getMangasByAuthorURL, page: page, string: sortOption), type: DTOMangasResult.self).items.map(\.toPresentation)
     }
 }

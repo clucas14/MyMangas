@@ -12,6 +12,8 @@ struct MangasListView: View {
     
     @State var selectedManga: Manga?
     
+//    @State var isPresentedAuthors = true
+    
     var body: some View {
         ZStack {
             NavigationStack {
@@ -39,7 +41,7 @@ struct MangasListView: View {
                     }
                 }
                 .navigationTitle("Mangas")
-                .searchable(text: $vm.searchText, prompt: "Introduce tu búsqueda")
+                .searchable(text: vm.isPresentedSearchAuthors ? $vm.searchTextAuthors : $vm.searchText, prompt: vm.isPresentedSearchAuthors ? "Búsqueda por autor" : "Búsqueda por título")
                 .autocorrectionDisabled()
                 .sortedButton(sortOption: $vm.sortOption, sortType: $vm.sortType)
                 .navigationDestination(for: Manga.self) { manga in
@@ -59,6 +61,19 @@ struct MangasListView: View {
                         }
                     }
                 }
+            }
+            if !vm.searchTextAuthors.isEmpty && vm.isPresentedAuthors && !vm.searchEmpty {
+                List {
+                ForEach(vm.filteredAuthors) { author in
+                    Text(author.fullName)
+                        .onTapGesture {
+                            vm.sortOption = author.id
+                            vm.sortType = .authors
+                            vm.isPresentedAuthors = false
+                        }
+                        }
+                }
+                .padding(.top , 40)
             }
             if vm.searchEmpty {
                 if #available(iOS 17.0, *) {

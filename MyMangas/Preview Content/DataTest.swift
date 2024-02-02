@@ -36,6 +36,7 @@ extension MangaVM {
 
 struct DataTest: MangaNetworkInteractorProtocol {
     let url = Bundle.main.url(forResource: "testMangas", withExtension: ".json")!
+    let urlAuthors = Bundle.main.url(forResource: "testAuthors", withExtension: ".json")!
     
     func getMangas(page: Int) async throws -> [Manga] {
         let decoder = JSONDecoder()
@@ -45,6 +46,10 @@ struct DataTest: MangaNetworkInteractorProtocol {
         return try decoder.decode([DTOManga].self, from: data).map(\.toPresentation)
     }
     
+    func getAuthors() async throws -> [Author] {
+        let data = try Data(contentsOf: urlAuthors)
+        return try JSONDecoder().decode([AuthorDTO].self, from: data).map(\.toPresentation)
+    }
 //    HAY QUE MODIFICARLA!!!!
     func searchMangas(page: Int, searchString: String) async throws -> [Manga] {
         let decoder = JSONDecoder()
@@ -74,6 +79,14 @@ struct DataTest: MangaNetworkInteractorProtocol {
     
     //    HAY QUE MODIFICARLA!!!!
     func getMangasByDemographic(page: Int, sortOption: String) async throws -> [Manga] {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(.dateFormatCustom)
+        
+        let data = try Data(contentsOf: url)
+        return try decoder.decode([DTOManga].self, from: data).map(\.toPresentation)
+    }
+    
+    func getMangasByAuthor(page: Int, sortOption: String) async throws -> [Manga] {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(.dateFormatCustom)
         

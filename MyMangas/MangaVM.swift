@@ -17,7 +17,7 @@ final class MangaVM: ObservableObject {
             try? mangaDataInteractor.saveData(json: mangasCollection)
         }
     }
-    
+      
     @Published var searchText = "" {
         willSet {
             page = 1
@@ -43,6 +43,34 @@ final class MangaVM: ObservableObject {
     //        mangas.filter { $0.inCollection }
     //    }
     
+    var allAuthors : [Author] = []
+    
+    @Published var isPresentedSearchAuthors = false
+    @Published var isPresentedAuthors = false
+    
+    @Published var filteredAuthors: [Author] = []
+    
+    @Published var searchTextAuthors = "" {
+        didSet {
+            isPresentedSearchAuthors = true
+            isPresentedAuthors = true
+            filteredAuthors = allAuthors.filter { $0.fullName.localizedCaseInsensitiveContains(searchTextAuthors) }
+        }
+//        willSet {
+//            page = 1
+//            if sortType != .nofilter {
+//                sortType = .nofilter
+//            }
+//        }
+    }
+    
+    
+//    var authors : [Author] {
+//        Task {
+//            try await mangaInteractor.getAuthors
+//        }
+//    }
+    
     var page = 1
     // Hay que calcular el total de páginas para que no pueda hacer una llamada a getmangas de una página que no existe
     
@@ -58,6 +86,18 @@ final class MangaVM: ObservableObject {
         }
         Task {
             await getMangas()
+            await getAuthors()
+        }
+    }
+    
+    func getAuthors() async {
+        do {
+            let auth = try await mangaInteractor.getAuthors()
+            await MainActor.run {
+                self.allAuthors = auth
+            }
+        } catch {
+            
         }
     }
     
@@ -103,6 +143,10 @@ final class MangaVM: ObservableObject {
                 Task {
                     await sortedMangasByType(sortOption: sortOption)
                 }
+            case .authors:
+                Task {
+                    await searchMangasByAuthor(sortOption: sortOption)
+                }
             case .nofilter:
                 Task {
                     await searchText.isEmpty ? getMangas() : searchMangas()
@@ -121,6 +165,40 @@ final class MangaVM: ObservableObject {
                     }
                 }
                 let mangs = updateMangas(mangasNew: try await mangaInteractor.searchMangas(page: page, searchString: searchText))
+                await MainActor.run {
+                    if mangs.isEmpty && page == 1 {
+                        searchEmpty = true
+                    } else {
+                        searchEmpty = false
+                    }
+                    self.mangas += mangs
+                }
+            } catch {
+                print(error)
+            }
+            //            Darle una vuelta al else
+        } else {
+            await MainActor.run {
+                mangas.removeAll()
+                searchEmpty = false
+            }
+            page = 1
+            Task {
+                await getMangas()
+            }
+        }
+    }
+    
+    func searchMangasByAuthor(sortOption: String) async {
+        if !searchTextAuthors.isEmpty {
+            do {
+                // Si es la primera búsqueda vaciamos el array de mangas
+                if page == 1 {
+                    await MainActor.run {
+                        mangas.removeAll()
+                    }
+                }
+                let mangs = updateMangas(mangasNew: try await mangaInteractor.getMangasByAuthor(page: page, sortOption: sortOption))
                 await MainActor.run {
                     if mangs.isEmpty && page == 1 {
                         searchEmpty = true
@@ -171,11 +249,19 @@ final class MangaVM: ObservableObject {
                 await MainActor.run {
                     self.mangas += mangs
                 }
-            case.nofilter:
+            case .authors:
+//                let mangs = updateMangas(mangasNew: try await mangaInteractor.getMangasByAuthor(page: page, sortOption: sortOption))
+                await searchMangasByAuthor(sortOption: sortOption)
+//                await MainActor.run {
+//                    self.mangas += mangs
+//                }
+            case .nofilter:
                 await MainActor.run {
                     mangas.removeAll()
                 }
                 page = 1
+                isPresentedSearchAuthors = false
+                isPresentedAuthors = false
                 Task {
                     await getMangas()
                 }

@@ -1,0 +1,92 @@
+[
+    {
+        "id": "6F0B6948-08C4-4761-8BE1-192E68AB0A2F",
+        "role": "Story & Art",
+        "lastName": "Miura",
+        "firstName": "Kentarou"
+    },
+    {
+        "id": "0304C4E9-2D89-463A-8FDD-EEAB5B9D57B3",
+        "role": "Art",
+        "lastName": "Studio Gaga",
+        "firstName": ""
+    },
+    {
+        "id": "25617399-543F-4220-9114-3A4181AF8D80",
+        "role": "Story & Art",
+        "lastName": "Oda",
+        "firstName": "Eiichiro"
+    },
+    {
+        "id": "30B3A8B4-7A8D-4913-8370-28975F785354",
+        "role": "Story & Art",
+        "lastName": "Araki",
+        "firstName": "Hirohiko"
+    },
+    {
+        "id": "41200864-D639-4330-998A-4B914A8FCBFB",
+        "role": "Story & Art",
+        "lastName": "Asano",
+        "firstName": "Inio"
+    },
+    {
+        "id": "F0D2B37F-8B21-4783-8CD7-11DA6D714A78",
+        "role": "Story & Art",
+        "lastName": "Arakawa",
+        "firstName": "Hiromu"
+    },
+    {
+        "id": "FB305DE7-B30E-41D1-B4AB-24B7565E3840",
+        "role": "Story & Art",
+        "lastName": "Inoue",
+        "firstName": "Takehiko"
+    },
+    {
+        "id": "E41AA0E7-6DFC-4D50-9875-8150AF4797BC",
+        "role": "Story",
+        "lastName": "Yoshikawa",
+        "firstName": "Eiji"
+    },
+    {
+        "id": "F2B6B013-3C9C-4323-9C64-2DA470D8375A",
+        "role": "Story & Art",
+        "lastName": "Yukimura",
+        "firstName": "Makoto"
+    },
+    {
+        "id": "C4B4968E-7AB2-4FBB-86FA-854D36A4A278",
+        "role": "Story & Art",
+        "lastName": "Akasaka",
+        "firstName": "Aka"
+    },
+    {
+        "id": "D1A6DC50-0B82-4864-AAEB-27A120FD1221",
+        "role": "Story & Art",
+        "lastName": "Fujimoto",
+        "firstName": "Tatsuki"
+    },
+    {
+        "lastName": "Urasawa",
+        "firstName": "Naoki",
+        "role": "Story & Art",
+        "id": "54BE174C-2FE9-42C8-A842-85D291A6AEDD"
+    },
+    {
+        "lastName": "Ooima",
+        "firstName": "Yoshitoki",
+        "role": "Story & Art",
+        "id": "70BC80AA-1F4D-4020-9D28-D0E8606B7D94"
+    },
+    {
+        "lastName": "Murata",
+        "firstName": "Yusuke",
+        "role": "Art",
+        "id": "E488A952-2FD8-43C6-A845-723F0DB92C59"
+    },
+    {
+        "lastName": "ONE",
+        "firstName": "",
+        "role": "Story",
+        "id": "6ED4BCD6-4152-4945-B657-01DE9EF6462F"
+    }
+]
