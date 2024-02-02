@@ -12,7 +12,7 @@ struct MangasListView: View {
     
     @State var selectedManga: Manga?
     
-//    @State var isPresentedAuthors = true
+    //    @State var isPresentedAuthors = true
     
     var body: some View {
         ZStack {
@@ -64,14 +64,16 @@ struct MangasListView: View {
             }
             if !vm.searchTextAuthors.isEmpty && vm.isPresentedAuthors {
                 List {
-                ForEach(vm.filteredAuthors) { author in
-                    Text(author.fullName)
-                        .onTapGesture {
+                    ForEach(vm.filteredAuthors) { author in
+                        Button {
                             vm.sortOption = author.id
                             vm.sortType = .authors
                             vm.isPresentedAuthors = false
+                        } label: {
+                            Text(author.fullName)
                         }
-                        }
+                        .tint(.black)
+                    }
                 }
                 .padding(.top , 40)
             }
