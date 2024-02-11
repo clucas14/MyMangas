@@ -45,16 +45,6 @@ struct MangasGridView: View {
                         
                     }
                     .navigationTitle("My collection")
-                    
-                    //                .toolbar {
-                    //                    ToolbarItem(placement: .topBarTrailing) {
-                    //                        Button {
-                    //                            mangasVM.mangasViewType = .list
-                    //                        } label: {
-                    //                            Label("List View", systemImage: "list.bullet")
-                    //                        }
-                    //                    }
-                    //                }
                 }
             }
         }

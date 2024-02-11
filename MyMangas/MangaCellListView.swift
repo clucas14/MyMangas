@@ -15,7 +15,6 @@ struct MangaCellListView: View {
             MangaPictureView(manga: manga)
             VStack(alignment: .leading) {
                 Text(manga.title)
-                   // .font(.headline)
                 Text(manga.status.capitalizedValue)
                     .font(.caption)
                     .opacity(0.6)
@@ -28,7 +27,6 @@ struct MangaCellListView: View {
                         .fill(.black)
                         .frame(width: 20, height: 23)
                         .clipShape(RoundedRectangle(cornerRadius: 6))
-//                        .shadow(color: .black.opacity(0.3), radius: 5, x: 0, y: 5)
                     Image(systemName: "character.book.closed.fill.ja")
                         .foregroundStyle(.yellow)
                 }

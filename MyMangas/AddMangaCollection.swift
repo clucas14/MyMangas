@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct AddMangaCollection: View {
-    
     @ObservedObject var editVM: MangaEditVM
     @EnvironmentObject var vm: MangaVM
     
@@ -17,32 +16,9 @@ struct AddMangaCollection: View {
     var body: some View {
         NavigationView {
             Form {
-                Section {
-                    NavigationLink(destination: MultiSelectionView(editVM: editVM)) {
-                        HStack {
-                            Text("Volúmenes: ")
-                            Spacer()
-                            Text(editVM.listOwnedVolumes)
-                                .foregroundColor(.gray)
-                                .multilineTextAlignment(.trailing)
-                        }
-                    }
-                }
-                Section {
-                    Picker("Volumen en lectura:", selection: $editVM.readingVolume) {
-                        ForEach(editVM.sortOwnedVolumes, id: \.self) { volume in
-                            Text("\(volume)")
-                        }
-                    }
-                    .padding(EdgeInsets(top: -5,leading: 0,bottom: -5,trailing: 0))
-                }
-                Section {
-                    Picker("Colección completa:", selection: $editVM.completeCollection) {
-                        Text("Si").tag(true)
-                        Text("No").tag(false)
-                    }
-                    .padding(EdgeInsets(top: -5,leading: 0,bottom: -5,trailing: 0))
-                }
+                SectionVolumes(editVM: editVM)
+                SectionReadingVolume(editVM: editVM)
+                SectionCollection(editVM: editVM)
             }
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
@@ -56,25 +32,22 @@ struct AddMangaCollection: View {
                             dismiss()
                         }
                     } label: {
-                        Text("Guardar")
+                        Text("Save")
                     }
                 }
                 ToolbarItem(placement: .cancellationAction) {
                     Button {
                         dismiss()
                     } label: {
-                        Text("Cancelar")
+                        Text("Cancel")
                     }
-                    
                 }
             }
             .alert("Validation error",
                    isPresented: $editVM.showAlert) {
-                
             } message: {
                 Text(editVM.msg)
             }
-
         }
     }
 }

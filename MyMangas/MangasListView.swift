@@ -12,8 +12,6 @@ struct MangasListView: View {
     
     @State var selectedManga: Manga?
     
-    //    @State var isPresentedAuthors = true
-    
     var body: some View {
         ZStack {
             NavigationStack {
@@ -30,7 +28,7 @@ struct MangasListView: View {
                                             selectedManga = manga
                                         }
                                     } label: {
-                                        Label(manga.inCollection ? "Quitar de mi colección" : "Añadir a mi colección", systemImage: manga.inCollection ? "minus" : "plus")
+                                        Label(manga.inCollection ? "Remove from my collection" : "Add to my collection", systemImage: manga.inCollection ? "minus" : "plus")
                                     }
                                     .tint(manga.inCollection ? .red : .yellow)
                                 }
@@ -41,7 +39,7 @@ struct MangasListView: View {
                     }
                 }
                 .navigationTitle("Mangas")
-                .searchable(text: vm.isPresentedSearchAuthors ? $vm.searchTextAuthors : $vm.searchText, prompt: vm.isPresentedSearchAuthors ? "Búsqueda por autor" : "Búsqueda por título")
+                .searchable(text: vm.isPresentedSearchAuthors ? $vm.searchTextAuthors : $vm.searchText, prompt: vm.isPresentedSearchAuthors ? "Search by author" : "Search by title")
                 .autocorrectionDisabled()
                 .sortedButton(sortOption: $vm.sortOption, sortType: $vm.sortType)
                 .navigationDestination(for: Manga.self) { manga in

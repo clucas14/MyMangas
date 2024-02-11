@@ -25,9 +25,9 @@ final class MangaEditVM: ObservableObject {
     var listOwnedVolumes: String {
         if !ownedVolumes.isEmpty {
             let ownedVolumesString = ownedVolumes.sorted().map { "\($0)" }
-            return ownedVolumesString.formatted(.list(type: .and).locale(Locale(identifier: "es")))
+            return ownedVolumesString.formatted(.list(type: .and))
         } else {
-            return "No hay ninguno seleccionado"
+            return "There are none selected"
         }
     }
     
@@ -39,44 +39,41 @@ final class MangaEditVM: ObservableObject {
     }
     
     func toggleSelectionVolume(volume: Int){
-            if ownedVolumes.contains(volume) {
-                ownedVolumes.remove(volume)
-            } else {
-                ownedVolumes.insert(volume)
-            }
+        if ownedVolumes.contains(volume) {
+            ownedVolumes.remove(volume)
+        } else {
+            ownedVolumes.insert(volume)
         }
-
-//    func saveEditManga() -> Manga {
-//        Manga(id: manga.id, title: manga.title, titleJapanese: manga.titleJapanese, score: manga.score, mainPicture: manga.mainPicture, chapters: manga.chapters, volumes: manga.volumes, status: manga.status, sypnosis: manga.sypnosis, startDate: manga.startDate, endDate: manga.endDate, url: manga.url, authors: manga.authors, demographics: manga.demographics, genres: manga.genres, themes: manga.themes, inCollection: true, ownedVolumes: ownedVolumes, readingVolume: readingVolume, completeCollection: completeCollection)
-//    }
+    }
+    
+    func saveEditManga() -> Manga {
+        Manga(id: manga.id, title: manga.title, titleJapanese: manga.titleJapanese, score: manga.score, mainPicture: manga.mainPicture, chapters: manga.chapters, volumes: manga.volumes, status: manga.status, sypnosis: manga.sypnosis, startDate: manga.startDate, endDate: manga.endDate, url: manga.url, authors: manga.authors, demographics: manga.demographics, genres: manga.genres, themes: manga.themes, inCollection: manga.inCollection, ownedVolumes: ownedVolumes, readingVolume: readingVolume, completeCollection: completeCollection)
+    }
     
     func validateManga() -> Manga? {
         var message = ""
         
         if  ownedVolumes.count == 0 && manga.volumes != nil {
-            message += "Debes seleccionar al menos un volumen.\n"
+            message += "You must select at least one volume.\n"
         }
         if completeCollection == true {
             if ownedVolumes.count != manga.volumes && manga.volumes != nil {
-                message += "No tienes todos los volúmenes seleccionados y por tanto no puedes tener la colección completa.\n"
+                message += "You do not have all the volumes selected and therefore cannot have the complete collection.\n"
             } else {
                 switch manga.status {
                 case .currentlyPublishing:
-                    message += "No se puede marcar como completa la colección ya que el manga está actualmente en publicación y no está finalizado.\n"
+                    message += "The collection cannot be marked as complete as the manga is currently in publication and is not finished.\n"
                 case .finished:
-                    manga = Manga(id: manga.id, title: manga.title, titleJapanese: manga.titleJapanese, score: manga.score, mainPicture: manga.mainPicture, chapters: manga.chapters, volumes: manga.volumes, status: manga.status, sypnosis: manga.sypnosis, startDate: manga.startDate, endDate: manga.endDate, url: manga.url, authors: manga.authors, demographics: manga.demographics, genres: manga.genres, themes: manga.themes, inCollection: manga.inCollection, ownedVolumes: ownedVolumes, readingVolume: readingVolume, completeCollection: completeCollection)
-                    return manga
+                    return saveEditManga()
                 case .onHiatus:
-                    message += "No se puede marcar como completa la colección ya que la publicación del manga está pausada y no está finalizada.\n"
+                    message += "The collection cannot be marked as complete as the manga publication is paused and is not finalized.\n"
                 case .discontinued:
-                    manga = Manga(id: manga.id, title: manga.title, titleJapanese: manga.titleJapanese, score: manga.score, mainPicture: manga.mainPicture, chapters: manga.chapters, volumes: manga.volumes, status: manga.status, sypnosis: manga.sypnosis, startDate: manga.startDate, endDate: manga.endDate, url: manga.url, authors: manga.authors, demographics: manga.demographics, genres: manga.genres, themes: manga.themes, inCollection: manga.inCollection, ownedVolumes: ownedVolumes, readingVolume: readingVolume, completeCollection: completeCollection)
-                    return manga
+                    return saveEditManga()
                 }
             }
         }
         if message.isEmpty {
-            manga = Manga(id: manga.id, title: manga.title, titleJapanese: manga.titleJapanese, score: manga.score, mainPicture: manga.mainPicture, chapters: manga.chapters, volumes: manga.volumes, status: manga.status, sypnosis: manga.sypnosis, startDate: manga.startDate, endDate: manga.endDate, url: manga.url, authors: manga.authors, demographics: manga.demographics, genres: manga.genres, themes: manga.themes, inCollection: manga.inCollection, ownedVolumes: ownedVolumes, readingVolume: readingVolume, completeCollection: completeCollection)
-            return manga
+            return saveEditManga()
         } else {
             self.msg = String(message.dropLast())
             self.showAlert.toggle()

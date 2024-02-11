@@ -121,11 +121,11 @@ enum MangaStatus: String, Codable {
 }
 
 enum SortType: String, CaseIterable, Identifiable {
-    case themes = "Temas"
-    case genres = "Género"
-    case demographics = "Demografías"
-    case authors = "Autores"
-    case nofilter = "Sin filtros"
+    case themes = "Themes"
+    case genres = "Genres"
+    case demographics = "Demographics"
+    case authors = "Authors"
+    case nofilter = "No filters"
     
     var id: Self { self }
 }

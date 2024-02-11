@@ -34,9 +34,6 @@ struct MangaCellGridView: View {
                         Text(manga.title)
                             .font(.headline)
                             .lineLimit(2, reservesSpace: true)
-//                        Text(manga.status.capitalizedValue)
-//                            .font(.caption)
-//                            .padding(.top, -20)
                     }
                     .foregroundColor(Color.white)
                     Spacer()
@@ -62,8 +59,7 @@ struct MangaCellGridView: View {
         }
         .buttonStyle(.plain)
     }
-    }
-//}
+}
 
 #Preview {
     MangaCellGridView(manga: .test)

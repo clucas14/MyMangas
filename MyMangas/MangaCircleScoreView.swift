@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-//Sacarlo al ViewModel?¿?¿
 enum CircleSize: CGFloat {
     case small = 70
     case large = 100

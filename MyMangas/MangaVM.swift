@@ -52,9 +52,6 @@ final class MangaVM: ObservableObject {
         }
         willSet {
             page = 1
-//            if sortType != .nofilter {
-//                sortType = .nofilter
-//            }
         }
     }
     
@@ -163,7 +160,6 @@ final class MangaVM: ObservableObject {
             } catch {
                 print(error)
             }
-            //            Darle una vuelta al else
         } else {
             await MainActor.run {
                 mangas.removeAll()
@@ -197,7 +193,6 @@ final class MangaVM: ObservableObject {
             } catch {
                 print(error)
             }
-            //            Darle una vuelta al else
         } else {
             await MainActor.run {
                 mangas.removeAll()
@@ -219,29 +214,22 @@ final class MangaVM: ObservableObject {
             }
             switch sortType {
             case .themes:
-                //                let mangs = try await mangaInteractor.getMangasByTheme(page: page, sortOption: sortOption)
                 let mangs = updateMangas(mangasNew: try await mangaInteractor.getMangasByTheme(page: page, sortOption: sortOption))
                 await MainActor.run {
                     self.mangas += mangs
                 }
             case .genres:
-                //                let mangs = try await mangaInteractor.getMangasByGenre(page: page, sortOption: sortOption)
                 let mangs = updateMangas(mangasNew: try await mangaInteractor.getMangasByGenre(page: page, sortOption: sortOption))
                 await MainActor.run {
                     self.mangas += mangs
                 }
             case .demographics:
-                //                let mangs = try await mangaInteractor.getMangasByDemographic(page: page, sortOption: sortOption)
                 let mangs = updateMangas(mangasNew: try await mangaInteractor.getMangasByDemographic(page: page, sortOption: sortOption))
                 await MainActor.run {
                     self.mangas += mangs
                 }
             case .authors:
-//                let mangs = updateMangas(mangasNew: try await mangaInteractor.getMangasByAuthor(page: page, sortOption: sortOption))
                 await searchMangasByAuthor(sortOption: sortOption)
-//                await MainActor.run {
-//                    self.mangas += mangs
-//                }
             case .nofilter:
                 await MainActor.run {
                     mangas.removeAll()
@@ -261,8 +249,8 @@ final class MangaVM: ObservableObject {
     func removeMyCollection(manga: Manga) {
         if let index = mangas.firstIndex(where: { $0.id == manga.id }) {
             mangas[index].inCollection.toggle()
-            if let index = mangasCollection.firstIndex(where: { $0.id == manga.id }) {
-                mangasCollection.remove(at: index)
+            if let indexCollec = mangasCollection.firstIndex(where: { $0.id == manga.id }) {
+                mangasCollection.remove(at: indexCollec)
             }
         }
     }
@@ -275,11 +263,13 @@ final class MangaVM: ObservableObject {
             mangasCollection[index] = manga
         }
     }
-    
+        
     func addMyCollection(manga: Manga) {
-        if let index = mangas.firstIndex(where: { $0.id == manga.id }) {
-            mangas[index].inCollection.toggle()
-            mangasCollection.append(mangas[index])
+        var mng = manga
+        if let index = mangas.firstIndex(where: { $0.id == mng.id }) {
+            mng.inCollection.toggle()
+            mangas[index] = mng
+            mangasCollection.append(mng)
         }
     }
 }

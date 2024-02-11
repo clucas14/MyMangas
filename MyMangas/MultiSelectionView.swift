@@ -8,24 +8,15 @@
 import SwiftUI
 
 struct MultiSelectionView: View {
-    //    struct MultiSelectionView<Selectable: Identifiable & Hashable>: View {
-    //        let options: [Selectable]
-    //        let optionToString: (Selectable) -> String
-    //        @Binding
-    //        var selected: Set<Selectable>
-    
-    //    let manga: Manga
-    //    @EnvironmentObject var vm: MangaVM
     @ObservedObject var editVM: MangaEditVM
     
     var body: some View {
         List {
             if let volumes = editVM.manga.volumes {
                 ForEach(1..<volumes + 1) { volume in
-                    //                    Button(action: { vm.toggleSelectionVolume(manga: manga, volume: volume) }) {
                     Button(action: { editVM.toggleSelectionVolume(volume: volume) }) {
                         HStack {
-                            Text("Volumen \(volume)")
+                            Text("Volume \(volume)")
                                 .foregroundStyle(.black)
                             Spacer()
                             Image(systemName: "checkmark").foregroundColor(.accentColor)
@@ -34,9 +25,9 @@ struct MultiSelectionView: View {
                     }
                 }
             } else {
-                Text("No hay datos de los volúmenes")
+                Text("No volume data available.")
             }
-        }//.listStyle(GroupedListStyle())
+        }
     }
 }
 
