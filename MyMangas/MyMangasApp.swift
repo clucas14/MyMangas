@@ -13,8 +13,12 @@ struct MyMangasApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MangasTabView()
-                .environmentObject(vm)
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                MangasTabViewiPad()
+            } else {
+                MangasTabView()
+                    .environmentObject(vm)
+            }
         }
     }
 }

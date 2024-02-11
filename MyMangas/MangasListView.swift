@@ -39,7 +39,7 @@ struct MangasListView: View {
                     }
                 }
                 .navigationTitle("Mangas")
-                .searchable(text: vm.isPresentedSearchAuthors ? $vm.searchTextAuthors : $vm.searchText, prompt: vm.isPresentedSearchAuthors ? "Search by author" : "Search by title")
+                .searchable(text: vm.isPresentedSearchAuthors ? $vm.searchTextAuthors : $vm.searchText, isPresented: $vm.isPresentedSearchableByAuthors, prompt: vm.isPresentedSearchAuthors ? "Search by author" : "Search by title")
                 .autocorrectionDisabled()
                 .sortedButton(sortOption: $vm.sortOption, sortType: $vm.sortType)
                 .navigationDestination(for: Manga.self) { manga in
@@ -73,7 +73,7 @@ struct MangasListView: View {
                         .tint(.black)
                     }
                 }
-                .padding(.top , 40)
+                .padding(.top , 50)
             }
             if vm.searchEmpty {
                 if #available(iOS 17.0, *) {

@@ -61,7 +61,7 @@ fileprivate struct SortedButton: ViewModifier {
                         }
                         Button {
                             vm.isPresentedSearchAuthors = true
-                            
+                            vm.isPresentedSearchableByAuthors = true
                         } label: {
                             Text(SortType.authors.rawValue)
                         }

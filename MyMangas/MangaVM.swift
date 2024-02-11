@@ -41,6 +41,7 @@ final class MangaVM: ObservableObject {
     
     @Published var isPresentedSearchAuthors = false
     @Published var isPresentedAuthors = false
+    @Published var isPresentedSearchableByAuthors = false
     
     @Published var filteredAuthors: [Author] = []
     

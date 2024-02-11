@@ -35,6 +35,7 @@
 		4A9AC15D2B795F5200167507 /* SectionVolumes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9AC15C2B795F5200167507 /* SectionVolumes.swift */; };
 		4A9AC15F2B79631B00167507 /* SectionReadingVolume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9AC15E2B79631B00167507 /* SectionReadingVolume.swift */; };
 		4A9AC1612B79639700167507 /* SectionCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9AC1602B79639700167507 /* SectionCollection.swift */; };
+		4A9AC1642B796C8500167507 /* MangasTabViewiPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9AC1632B796C8500167507 /* MangasTabViewiPad.swift */; };
 		4AE448572B4FEEE1001B07DB /* AddMangaCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE448562B4FEEE1001B07DB /* AddMangaCollection.swift */; };
 		4AE448592B4FF122001B07DB /* MultiSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE448582B4FF122001B07DB /* MultiSelectionView.swift */; };
 		4AE4485B2B500CCE001B07DB /* MangaEditVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE4485A2B500CCE001B07DB /* MangaEditVM.swift */; };
@@ -73,6 +74,7 @@
 		4A9AC15C2B795F5200167507 /* SectionVolumes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionVolumes.swift; sourceTree = "<group>"; };
 		4A9AC15E2B79631B00167507 /* SectionReadingVolume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionReadingVolume.swift; sourceTree = "<group>"; };
 		4A9AC1602B79639700167507 /* SectionCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionCollection.swift; sourceTree = "<group>"; };
+		4A9AC1632B796C8500167507 /* MangasTabViewiPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangasTabViewiPad.swift; sourceTree = "<group>"; };
 		4AE448562B4FEEE1001B07DB /* AddMangaCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMangaCollection.swift; sourceTree = "<group>"; };
 		4AE448582B4FF122001B07DB /* MultiSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectionView.swift; sourceTree = "<group>"; };
 		4AE4485A2B500CCE001B07DB /* MangaEditVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaEditVM.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				4A9AC15C2B795F5200167507 /* SectionVolumes.swift */,
 				4A9AC15E2B79631B00167507 /* SectionReadingVolume.swift */,
 				4A9AC1602B79639700167507 /* SectionCollection.swift */,
+				4A9AC1622B796C0400167507 /* iPad */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -211,6 +214,14 @@
 				4A9242D92B3225F700CF07F7 /* DateFormatterExtension.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		4A9AC1622B796C0400167507 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				4A9AC1632B796C8500167507 /* MangasTabViewiPad.swift */,
+			);
+			name = iPad;
 			sourceTree = "<group>";
 		};
 		4AEC46632B59A85300F6A351 /* Resources */ = {
@@ -311,6 +322,7 @@
 				4AF818AD2B51F3F0007AFE92 /* DataInteractor.swift in Sources */,
 				4A4142F52B34CB8B000DA882 /* DataTest.swift in Sources */,
 				4AE448592B4FF122001B07DB /* MultiSelectionView.swift in Sources */,
+				4A9AC1642B796C8500167507 /* MangasTabViewiPad.swift in Sources */,
 				4A46D98A2B37524400729288 /* MangaCircleScoreView.swift in Sources */,
 				4AE448572B4FEEE1001B07DB /* AddMangaCollection.swift in Sources */,
 				4A9242D52B32245700CF07F7 /* NetworkError.swift in Sources */,
@@ -464,6 +476,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -493,6 +506,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
