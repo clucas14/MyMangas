@@ -17,7 +17,9 @@ struct MultiSelectionView: View {
                     Button(action: { editVM.toggleSelectionVolume(volume: volume) }) {
                         HStack {
                             Text("Volume \(volume)")
-//                                .foregroundStyle(.black)
+                            #if os(iOS)
+                                .foregroundStyle(.black)
+                            #endif
                             Spacer()
                             Image(systemName: "checkmark").foregroundColor(.accentColor)
                                 .opacity(editVM.ownedVolumes.contains(volume) ? 1 : 0)
