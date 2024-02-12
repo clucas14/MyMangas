@@ -265,12 +265,12 @@ final class MangaVM: ObservableObject {
         }
     }
         
-    func addMyCollection(manga: Manga) {
-        var mng = manga
-        if let index = mangas.firstIndex(where: { $0.id == mng.id }) {
-            mng.inCollection.toggle()
-            mangas[index] = mng
-            mangasCollection.append(mng)
+    func addMyCollection(manga: inout Manga) {
+//        var mng = manga
+        if let index = mangas.firstIndex(where: { $0.id == manga.id }) {
+            manga.inCollection.toggle()
+            mangas[index] = manga
+            mangasCollection.append(manga)
         }
     }
 }
