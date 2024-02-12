@@ -17,7 +17,7 @@ struct MultiSelectionView: View {
                     Button(action: { editVM.toggleSelectionVolume(volume: volume) }) {
                         HStack {
                             Text("Volume \(volume)")
-                                .foregroundStyle(.black)
+//                                .foregroundStyle(.black)
                             Spacer()
                             Image(systemName: "checkmark").foregroundColor(.accentColor)
                                 .opacity(editVM.ownedVolumes.contains(volume) ? 1 : 0)
@@ -26,6 +26,15 @@ struct MultiSelectionView: View {
                 }
             } else {
                 Text("No volume data available.")
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .confirmationAction) {
+                Button {
+                    editVM.showSelectAll ? editVM.allSlectionVolume() : editVM.removeAllSlectionVolume()
+                } label: {
+                    Text(editVM.showSelectAll ? "Select all" : "Remove all")
+                }
             }
         }
     }

@@ -18,7 +18,7 @@
 		4A46D9912B37591600729288 /* MangaPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A46D9902B37591600729288 /* MangaPictureView.swift */; };
 		4A65F8F52B349B40007B6865 /* Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A65F8F42B349B40007B6865 /* Presentation.swift */; };
 		4A7329C92B5707AF0056B16E /* MangaCellGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7329C82B5707AF0056B16E /* MangaCellGridView.swift */; };
-		4A7329CB2B5708BF0056B16E /* MangasGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7329CA2B5708BF0056B16E /* MangasGridView.swift */; };
+		4A7329CB2B5708BF0056B16E /* MangasCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7329CA2B5708BF0056B16E /* MangasCollectionView.swift */; };
 		4A81F6D52B6D4BC600C6FBFE /* testAuthors.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A81F6D42B6D4BC600C6FBFE /* testAuthors.json */; };
 		4A8D02D22B38990A007413E5 /* MangasTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8D02D12B38990A007413E5 /* MangasTabView.swift */; };
 		4A9242BD2B321DE900CF07F7 /* MyMangasApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9242BC2B321DE900CF07F7 /* MyMangasApp.swift */; };
@@ -36,13 +36,70 @@
 		4A9AC15F2B79631B00167507 /* SectionReadingVolume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9AC15E2B79631B00167507 /* SectionReadingVolume.swift */; };
 		4A9AC1612B79639700167507 /* SectionCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9AC1602B79639700167507 /* SectionCollection.swift */; };
 		4A9AC1642B796C8500167507 /* MangasTabViewiPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9AC1632B796C8500167507 /* MangasTabViewiPad.swift */; };
+		4A9AC16D2B79790800167507 /* MyMangas Watch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 4A9AC16C2B79790800167507 /* MyMangas Watch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4A9AC1722B79790800167507 /* MyMangas_WatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9AC1712B79790800167507 /* MyMangas_WatchApp.swift */; };
+		4A9AC1742B79790800167507 /* MangasListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9AC1732B79790800167507 /* MangasListView.swift */; };
+		4A9AC1812B797E8400167507 /* MangaVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4142F02B34C2EF000DA882 /* MangaVM.swift */; };
+		4A9AC1832B79847900167507 /* DTOManga.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9242E12B3228ED00CF07F7 /* DTOManga.swift */; };
+		4A9AC1842B79847900167507 /* Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A65F8F42B349B40007B6865 /* Presentation.swift */; };
+		4A9AC1852B79847900167507 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4142EE2B34BFEE000DA882 /* Model.swift */; };
+		4A9AC1872B7984CE00167507 /* DataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF818AC2B51F3F0007AFE92 /* DataInteractor.swift */; };
+		4A9AC1882B7984CE00167507 /* NetworkInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9242DD2B3226A000CF07F7 /* NetworkInteractor.swift */; };
+		4A9AC18B2B79851F00167507 /* testMangas.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A4142F22B34CB7E000DA882 /* testMangas.json */; };
+		4A9AC18C2B79851F00167507 /* DataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4142F42B34CB8B000DA882 /* DataTest.swift */; };
+		4A9AC18E2B79851F00167507 /* testAuthors.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A81F6D42B6D4BC600C6FBFE /* testAuthors.json */; };
+		4A9AC18F2B79857A00167507 /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9242D92B3225F700CF07F7 /* DateFormatterExtension.swift */; };
+		4A9AC1902B79859700167507 /* URLSesion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9242D22B32239E00CF07F7 /* URLSesion.swift */; };
+		4A9AC1912B79859700167507 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9242CE2B32209300CF07F7 /* URL.swift */; };
+		4A9AC1922B79859700167507 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9242D42B32245700CF07F7 /* NetworkError.swift */; };
+		4A9AC1932B79859700167507 /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9242D02B3221B200CF07F7 /* URLRequest.swift */; };
+		4A9AC19B2B7985EB00167507 /* MangaEditVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE4485A2B500CCE001B07DB /* MangaEditVM.swift */; };
+		4A9AC19D2B79861C00167507 /* MangaDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9AC19C2B79861C00167507 /* MangaDetailView.swift */; };
+		4A9AC1A42B7986EE00167507 /* MangaCellListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9AC1A32B7986EE00167507 /* MangaCellListView.swift */; };
+		4A9AC1A62B79875700167507 /* mangacollection.json in Resources */ = {isa = PBXBuildFile; fileRef = 4AEC46662B59B64800F6A351 /* mangacollection.json */; };
+		4A9AC1A82B798A1F00167507 /* MangaCircleScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A46D9892B37524400729288 /* MangaCircleScoreView.swift */; };
 		4AE448572B4FEEE1001B07DB /* AddMangaCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE448562B4FEEE1001B07DB /* AddMangaCollection.swift */; };
 		4AE448592B4FF122001B07DB /* MultiSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE448582B4FF122001B07DB /* MultiSelectionView.swift */; };
 		4AE4485B2B500CCE001B07DB /* MangaEditVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE4485A2B500CCE001B07DB /* MangaEditVM.swift */; };
 		4AEC46672B59B64800F6A351 /* mangacollection.json in Resources */ = {isa = PBXBuildFile; fileRef = 4AEC46662B59B64800F6A351 /* mangacollection.json */; };
+		4AF1D1CE2B7A40960097235F /* AddMangaCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE448562B4FEEE1001B07DB /* AddMangaCollection.swift */; };
+		4AF1D1CF2B7A409A0097235F /* SectionReadingVolume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9AC15E2B79631B00167507 /* SectionReadingVolume.swift */; };
+		4AF1D1D02B7A409A0097235F /* SectionVolumes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9AC15C2B795F5200167507 /* SectionVolumes.swift */; };
+		4AF1D1D12B7A409A0097235F /* SectionCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9AC1602B79639700167507 /* SectionCollection.swift */; };
+		4AF1D1D22B7A40E20097235F /* MultiSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE448582B4FF122001B07DB /* MultiSelectionView.swift */; };
+		4AF1D1D52B7A42560097235F /* MangaCellGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7329C82B5707AF0056B16E /* MangaCellGridView.swift */; };
+		4AF1D1D72B7A42C10097235F /* MangasCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF1D1D62B7A42C10097235F /* MangasCollectionView.swift */; };
+		4AF1D1D92B7A44620097235F /* MangasTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF1D1D82B7A44620097235F /* MangasTabView.swift */; };
+		4AF1D1DA2B7A462D0097235F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A9242C02B321DEB00CF07F7 /* Assets.xcassets */; };
+		4AF1D1DB2B7A61A40097235F /* UpdateMangaCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFB69B62B65474000E43AFC /* UpdateMangaCollection.swift */; };
+		4AF1D1DD2B7A61C40097235F /* MangaPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF1D1DC2B7A61C40097235F /* MangaPictureView.swift */; };
 		4AF818AD2B51F3F0007AFE92 /* DataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF818AC2B51F3F0007AFE92 /* DataInteractor.swift */; };
 		4AFB69B72B65474000E43AFC /* UpdateMangaCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFB69B62B65474000E43AFC /* UpdateMangaCollection.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4A9AC16E2B79790800167507 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4A9242B12B321DE900CF07F7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4A9AC16B2B79790800167507;
+			remoteInfo = "MyMangas Watch Watch App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4A9AC17D2B79790A00167507 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				4A9AC16D2B79790800167507 /* MyMangas Watch Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4A295C8E2B3DEBF200D37810 /* SortedOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedOptions.swift; sourceTree = "<group>"; };
@@ -56,7 +113,7 @@
 		4A46D9902B37591600729288 /* MangaPictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaPictureView.swift; sourceTree = "<group>"; };
 		4A65F8F42B349B40007B6865 /* Presentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presentation.swift; sourceTree = "<group>"; };
 		4A7329C82B5707AF0056B16E /* MangaCellGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaCellGridView.swift; sourceTree = "<group>"; };
-		4A7329CA2B5708BF0056B16E /* MangasGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangasGridView.swift; sourceTree = "<group>"; };
+		4A7329CA2B5708BF0056B16E /* MangasCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangasCollectionView.swift; sourceTree = "<group>"; };
 		4A81F6D42B6D4BC600C6FBFE /* testAuthors.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testAuthors.json; sourceTree = "<group>"; };
 		4A8D02D12B38990A007413E5 /* MangasTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangasTabView.swift; sourceTree = "<group>"; };
 		4A9242B92B321DE900CF07F7 /* MyMangas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMangas.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,10 +132,19 @@
 		4A9AC15E2B79631B00167507 /* SectionReadingVolume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionReadingVolume.swift; sourceTree = "<group>"; };
 		4A9AC1602B79639700167507 /* SectionCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionCollection.swift; sourceTree = "<group>"; };
 		4A9AC1632B796C8500167507 /* MangasTabViewiPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangasTabViewiPad.swift; sourceTree = "<group>"; };
+		4A9AC1672B79790800167507 /* MyMangas Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MyMangas Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A9AC16C2B79790800167507 /* MyMangas Watch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MyMangas Watch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A9AC1712B79790800167507 /* MyMangas_WatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMangas_WatchApp.swift; sourceTree = "<group>"; };
+		4A9AC1732B79790800167507 /* MangasListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangasListView.swift; sourceTree = "<group>"; };
+		4A9AC19C2B79861C00167507 /* MangaDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaDetailView.swift; sourceTree = "<group>"; };
+		4A9AC1A32B7986EE00167507 /* MangaCellListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaCellListView.swift; sourceTree = "<group>"; };
 		4AE448562B4FEEE1001B07DB /* AddMangaCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMangaCollection.swift; sourceTree = "<group>"; };
 		4AE448582B4FF122001B07DB /* MultiSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectionView.swift; sourceTree = "<group>"; };
 		4AE4485A2B500CCE001B07DB /* MangaEditVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaEditVM.swift; sourceTree = "<group>"; };
 		4AEC46662B59B64800F6A351 /* mangacollection.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mangacollection.json; sourceTree = "<group>"; };
+		4AF1D1D62B7A42C10097235F /* MangasCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangasCollectionView.swift; sourceTree = "<group>"; };
+		4AF1D1D82B7A44620097235F /* MangasTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangasTabView.swift; sourceTree = "<group>"; };
+		4AF1D1DC2B7A61C40097235F /* MangaPictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaPictureView.swift; sourceTree = "<group>"; };
 		4AF818AC2B51F3F0007AFE92 /* DataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataInteractor.swift; sourceTree = "<group>"; };
 		4AFB69B62B65474000E43AFC /* UpdateMangaCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMangaCollection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,12 +157,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4A9AC1692B79790800167507 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		4A46D9882B37521A00729288 /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
+				4A9AC15C2B795F5200167507 /* SectionVolumes.swift */,
+				4A9AC15E2B79631B00167507 /* SectionReadingVolume.swift */,
+				4A9AC1602B79639700167507 /* SectionCollection.swift */,
 				4A7329C82B5707AF0056B16E /* MangaCellGridView.swift */,
 				4A46D98B2B3755A900729288 /* MangaCellListView.swift */,
 				4A46D9892B37524400729288 /* MangaCircleScoreView.swift */,
@@ -110,15 +186,12 @@
 		4A46D98F2B3758DA00729288 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4A9242BE2B321DE900CF07F7 /* MangasListView.swift */,
-				4A7329CA2B5708BF0056B16E /* MangasGridView.swift */,
 				4A8D02D12B38990A007413E5 /* MangasTabView.swift */,
+				4A9242BE2B321DE900CF07F7 /* MangasListView.swift */,
+				4A7329CA2B5708BF0056B16E /* MangasCollectionView.swift */,
 				4A46D98D2B3756E200729288 /* MangaDetailView.swift */,
 				4AE448562B4FEEE1001B07DB /* AddMangaCollection.swift */,
 				4AFB69B62B65474000E43AFC /* UpdateMangaCollection.swift */,
-				4A9AC15C2B795F5200167507 /* SectionVolumes.swift */,
-				4A9AC15E2B79631B00167507 /* SectionReadingVolume.swift */,
-				4A9AC1602B79639700167507 /* SectionCollection.swift */,
 				4A9AC1622B796C0400167507 /* iPad */,
 			);
 			name = Views;
@@ -128,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				4A9242BB2B321DE900CF07F7 /* MyMangas */,
+				4A9AC1702B79790800167507 /* MyMangas Watch Watch App */,
 				4A9242BA2B321DE900CF07F7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -136,6 +210,8 @@
 			isa = PBXGroup;
 			children = (
 				4A9242B92B321DE900CF07F7 /* MyMangas.app */,
+				4A9AC1672B79790800167507 /* MyMangas Watch.app */,
+				4A9AC16C2B79790800167507 /* MyMangas Watch Watch App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -224,6 +300,20 @@
 			name = iPad;
 			sourceTree = "<group>";
 		};
+		4A9AC1702B79790800167507 /* MyMangas Watch Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				4A9AC1712B79790800167507 /* MyMangas_WatchApp.swift */,
+				4AF1D1D82B7A44620097235F /* MangasTabView.swift */,
+				4A9AC1732B79790800167507 /* MangasListView.swift */,
+				4AF1D1D62B7A42C10097235F /* MangasCollectionView.swift */,
+				4A9AC1A32B7986EE00167507 /* MangaCellListView.swift */,
+				4AF1D1DC2B7A61C40097235F /* MangaPictureView.swift */,
+				4A9AC19C2B79861C00167507 /* MangaDetailView.swift */,
+			);
+			path = "MyMangas Watch Watch App";
+			sourceTree = "<group>";
+		};
 		4AEC46632B59A85300F6A351 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,6 +342,40 @@
 			productReference = 4A9242B92B321DE900CF07F7 /* MyMangas.app */;
 			productType = "com.apple.product-type.application";
 		};
+		4A9AC1662B79790800167507 /* MyMangas Watch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4A9AC17E2B79790A00167507 /* Build configuration list for PBXNativeTarget "MyMangas Watch" */;
+			buildPhases = (
+				4A9AC1652B79790800167507 /* Resources */,
+				4A9AC17D2B79790A00167507 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4A9AC16F2B79790800167507 /* PBXTargetDependency */,
+			);
+			name = "MyMangas Watch";
+			productName = "MyMangas Watch";
+			productReference = 4A9AC1672B79790800167507 /* MyMangas Watch.app */;
+			productType = "com.apple.product-type.application.watchapp2-container";
+		};
+		4A9AC16B2B79790800167507 /* MyMangas Watch Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4A9AC17A2B79790A00167507 /* Build configuration list for PBXNativeTarget "MyMangas Watch Watch App" */;
+			buildPhases = (
+				4A9AC1682B79790800167507 /* Sources */,
+				4A9AC1692B79790800167507 /* Frameworks */,
+				4A9AC16A2B79790800167507 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MyMangas Watch Watch App";
+			productName = "MyMangas Watch Watch App";
+			productReference = 4A9AC16C2B79790800167507 /* MyMangas Watch Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -259,11 +383,17 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
+				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					4A9242B82B321DE900CF07F7 = {
 						CreatedOnToolsVersion = 15.0.1;
+					};
+					4A9AC1662B79790800167507 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					4A9AC16B2B79790800167507 = {
+						CreatedOnToolsVersion = 15.2;
 					};
 				};
 			};
@@ -281,6 +411,8 @@
 			projectRoot = "";
 			targets = (
 				4A9242B82B321DE900CF07F7 /* MyMangas */,
+				4A9AC1662B79790800167507 /* MyMangas Watch */,
+				4A9AC16B2B79790800167507 /* MyMangas Watch Watch App */,
 			);
 		};
 /* End PBXProject section */
@@ -298,6 +430,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4A9AC1652B79790800167507 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A9AC16A2B79790800167507 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A9AC18E2B79851F00167507 /* testAuthors.json in Resources */,
+				4A9AC1A62B79875700167507 /* mangacollection.json in Resources */,
+				4AF1D1DA2B7A462D0097235F /* Assets.xcassets in Resources */,
+				4A9AC18B2B79851F00167507 /* testMangas.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -312,7 +462,7 @@
 				4A46D98E2B3756E200729288 /* MangaDetailView.swift in Sources */,
 				4A295C8F2B3DEBF200D37810 /* SortedOptions.swift in Sources */,
 				4A8D02D22B38990A007413E5 /* MangasTabView.swift in Sources */,
-				4A7329CB2B5708BF0056B16E /* MangasGridView.swift in Sources */,
+				4A7329CB2B5708BF0056B16E /* MangasCollectionView.swift in Sources */,
 				4A9242E22B3228ED00CF07F7 /* DTOManga.swift in Sources */,
 				4A4142EF2B34BFEE000DA882 /* Model.swift in Sources */,
 				4A65F8F52B349B40007B6865 /* Presentation.swift in Sources */,
@@ -338,7 +488,50 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4A9AC1682B79790800167507 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A9AC1922B79859700167507 /* NetworkError.swift in Sources */,
+				4A9AC1852B79847900167507 /* Model.swift in Sources */,
+				4A9AC1902B79859700167507 /* URLSesion.swift in Sources */,
+				4AF1D1CF2B7A409A0097235F /* SectionReadingVolume.swift in Sources */,
+				4A9AC1742B79790800167507 /* MangasListView.swift in Sources */,
+				4AF1D1DB2B7A61A40097235F /* UpdateMangaCollection.swift in Sources */,
+				4A9AC18F2B79857A00167507 /* DateFormatterExtension.swift in Sources */,
+				4A9AC19B2B7985EB00167507 /* MangaEditVM.swift in Sources */,
+				4AF1D1D92B7A44620097235F /* MangasTabView.swift in Sources */,
+				4A9AC1912B79859700167507 /* URL.swift in Sources */,
+				4A9AC1872B7984CE00167507 /* DataInteractor.swift in Sources */,
+				4A9AC1842B79847900167507 /* Presentation.swift in Sources */,
+				4A9AC18C2B79851F00167507 /* DataTest.swift in Sources */,
+				4AF1D1D72B7A42C10097235F /* MangasCollectionView.swift in Sources */,
+				4A9AC1812B797E8400167507 /* MangaVM.swift in Sources */,
+				4A9AC1882B7984CE00167507 /* NetworkInteractor.swift in Sources */,
+				4A9AC19D2B79861C00167507 /* MangaDetailView.swift in Sources */,
+				4AF1D1D12B7A409A0097235F /* SectionCollection.swift in Sources */,
+				4AF1D1D52B7A42560097235F /* MangaCellGridView.swift in Sources */,
+				4AF1D1D22B7A40E20097235F /* MultiSelectionView.swift in Sources */,
+				4A9AC1932B79859700167507 /* URLRequest.swift in Sources */,
+				4A9AC1832B79847900167507 /* DTOManga.swift in Sources */,
+				4A9AC1A42B7986EE00167507 /* MangaCellListView.swift in Sources */,
+				4AF1D1CE2B7A40960097235F /* AddMangaCollection.swift in Sources */,
+				4AF1D1D02B7A409A0097235F /* SectionVolumes.swift in Sources */,
+				4A9AC1722B79790800167507 /* MyMangas_WatchApp.swift in Sources */,
+				4AF1D1DD2B7A61C40097235F /* MangaPictureView.swift in Sources */,
+				4A9AC1A82B798A1F00167507 /* MangaCircleScoreView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4A9AC16F2B79790800167507 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4A9AC16B2B79790800167507 /* MyMangas Watch Watch App */;
+			targetProxy = 4A9AC16E2B79790800167507 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		4A9242C52B321DEB00CF07F7 /* Debug */ = {
@@ -520,6 +713,96 @@
 			};
 			name = Release;
 		};
+		4A9AC17B2B79790A00167507 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "MyMangas/Preview\\ Content";
+				DEVELOPMENT_TEAM = 785WYTBPT2;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "MyMangas Watch";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.luko.MyMangas-Watch.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.2;
+			};
+			name = Debug;
+		};
+		4A9AC17C2B79790A00167507 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "MyMangas/Preview\\ Content";
+				DEVELOPMENT_TEAM = 785WYTBPT2;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "MyMangas Watch";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.luko.MyMangas-Watch.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.2;
+			};
+			name = Release;
+		};
+		4A9AC17F2B79790A00167507 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 785WYTBPT2;
+				INFOPLIST_KEY_CFBundleDisplayName = "MyMangas Watch";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.luko.MyMangas-Watch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		4A9AC1802B79790A00167507 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 785WYTBPT2;
+				INFOPLIST_KEY_CFBundleDisplayName = "MyMangas Watch";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.luko.MyMangas-Watch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -537,6 +820,24 @@
 			buildConfigurations = (
 				4A9242C82B321DEB00CF07F7 /* Debug */,
 				4A9242C92B321DEB00CF07F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4A9AC17A2B79790A00167507 /* Build configuration list for PBXNativeTarget "MyMangas Watch Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A9AC17B2B79790A00167507 /* Debug */,
+				4A9AC17C2B79790A00167507 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4A9AC17E2B79790A00167507 /* Build configuration list for PBXNativeTarget "MyMangas Watch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A9AC17F2B79790A00167507 /* Debug */,
+				4A9AC1802B79790A00167507 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

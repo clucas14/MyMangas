@@ -18,6 +18,8 @@ final class MangaEditVM: ObservableObject {
     @Published var msg = ""
     @Published var showAlert = false
     
+    @Published var showSelectAll = true
+    
     var sortOwnedVolumes: [Int] {
         ownedVolumes.sorted()
     }
@@ -43,6 +45,28 @@ final class MangaEditVM: ObservableObject {
             ownedVolumes.remove(volume)
         } else {
             ownedVolumes.insert(volume)
+        }
+    }
+    
+    func allSlectionVolume() {
+        if let volumes = manga.volumes {
+            for volume in 1...volumes {
+                if !ownedVolumes.contains(volume) {
+                    ownedVolumes.insert(volume)
+                }
+            }
+            showSelectAll.toggle()
+        }
+    }
+    
+    func removeAllSlectionVolume() {
+        if let volumes = manga.volumes {
+            for volume in 1...volumes {
+                if ownedVolumes.contains(volume) {
+                    ownedVolumes.remove(volume)
+                }
+            }
+            showSelectAll.toggle()
         }
     }
     

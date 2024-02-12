@@ -1,8 +1,8 @@
 //
 //  MangasTabView.swift
-//  MyMangas
+//  MyMangas Watch Watch App
 //
-//  Created by Carlos Lucas Sánchez on 24/12/23.
+//  Created by Carlos Lucas Sánchez on 12/2/24.
 //
 
 import SwiftUI
@@ -20,6 +20,7 @@ struct MangasTabView: View {
                     Label("Mangas", systemImage: "books.vertical")
                 }
         }
+        .tabViewStyle(.verticalPage)
     }
 }
 

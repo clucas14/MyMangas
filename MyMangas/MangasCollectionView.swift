@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MangasGridView: View {
+struct MangasCollectionView: View {
     @EnvironmentObject var vm: MangaVM
     
     let itemAdaptative = GridItem(.adaptive(minimum: 150), alignment: .center)
@@ -52,6 +52,6 @@ struct MangasGridView: View {
 }
 
 #Preview {
-    MangasGridView()
+    MangasCollectionView()
         .environmentObject(MangaVM.test)
 }
