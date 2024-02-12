@@ -24,12 +24,12 @@ struct UpdateMangaCollection: View {
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button {
-                        if var mang = editVM.validateManga() {
+                        if let mang = editVM.validateManga() {
                             manga = mang
                             if mang.inCollection {
                                 vm.updateManga(manga: mang)
                             } else {
-                                vm.addMyCollection(manga: &mang)
+                                vm.addMyCollection(manga: mang)
                             }
                             dismiss()
                         }
