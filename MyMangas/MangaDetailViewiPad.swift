@@ -1,19 +1,21 @@
 //
-//  MangaDetailView.swift
+//  MangaDetailViewiPad.swift
 //  MyMangas
 //
-//  Created by Carlos Lucas Sánchez on 23/12/23.
+//  Created by Carlos Lucas Sánchez on 14/2/24.
 //
 
 import SwiftUI
 
-struct MangaDetailView: View {
+struct MangaDetailViewiPad: View {
     @State var expandedGenres = false
     @State var expandedCollection = false
     @State var expandedSypnosis = false
     @State var isPresentedEdit = false
     
-    @State var manga: Manga
+    @Environment(\.dismiss) var dismiss
+    
+    var manga: Manga
     
     var body: some View {
         List {
@@ -21,8 +23,6 @@ struct MangaDetailView: View {
                 MangaPictureView(manga: manga, size: .detailPicture)
                     .padding(.top, 5)
                 MangaCircleScoreView(manga: manga)
-                //No lo puedo hacer con offset porque la animación se salta el offset y se va moviendo hasta el offset
-                //.offset(CGSize(width: 130, height: -395.0))
                     .padding(.top, -385)
                     .padding(.leading, 250)
             }
@@ -85,16 +85,16 @@ struct MangaDetailView: View {
         }
         .listStyle(.sidebar)
         .navigationTitle(manga.title)
-        .sheet(isPresented: $isPresentedEdit, content: {
-            UpdateMangaCollection(editVM: MangaEditVM(manga: manga), manga: $manga)
-                .presentationDetents([.medium])
-                .interactiveDismissDisabled()
-        })
+        .fullScreenCover(isPresented: $isPresentedEdit) {
+            dismiss()
+        } content: {
+            NavigationStack {
+                AddMangaCollection(editVM: MangaEditVM(manga: manga))
+            }
+        }
     }
 }
 
 #Preview {
-    NavigationStack {
-        MangaDetailView(manga: .test)
-    }
+    MangaDetailViewiPad(manga: .test)
 }

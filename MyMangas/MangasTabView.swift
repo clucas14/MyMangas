@@ -11,15 +11,32 @@ struct MangasTabView: View {
     
     var body: some View {
         TabView {
-            MangasCollectionView()
-                .tabItem {
-                    Label("My collection", systemImage: "character.book.closed.fill.ja")
+            Group {
+            Group {
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    MangasCollectionViewiPad()
+                } else {
+                    MangasCollectionView()
                 }
-            MangasListView()
-                .tabItem {
-                    Label("Mangas", systemImage: "books.vertical")
+            }
+                    .tabItem {
+                        Label("My collection", systemImage: "character.book.closed.fill.ja")
+                    }
+            Group {
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    MangasListViewiPad()
+                } else {
+                    MangasListView()
                 }
+            }
+                    .tabItem {
+                        Label("Mangas", systemImage: "books.vertical")
+                    }
+            }
+                        .toolbarBackground(.visible, for: .tabBar)
+                        .toolbarBackground(.black.opacity(0.6), for: .tabBar)
         }
+                .tint(.yellow)
     }
 }
 

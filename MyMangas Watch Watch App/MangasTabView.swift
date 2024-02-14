@@ -1,8 +1,8 @@
 //
 //  MangasTabView.swift
-//  MyMangas Watch Watch App
+//  MyMangas
 //
-//  Created by Carlos Lucas Sánchez on 12/2/24.
+//  Created by Carlos Lucas Sánchez on 24/12/23.
 //
 
 import SwiftUI

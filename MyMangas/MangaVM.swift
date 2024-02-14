@@ -12,7 +12,7 @@ final class MangaVM: ObservableObject {
     let mangaDataInteractor: DataInteractor
     
     @Published var mangas: [Manga] = []
-    @Published var mangasCollection: [Manga] = [] {
+    @Published var mangasCollection: [Manga] {
         didSet {
             try? mangaDataInteractor.saveData(json: mangasCollection)
         }
@@ -265,6 +265,7 @@ final class MangaVM: ObservableObject {
         }
     }
         
+//    Aquí sería conveniente usar inout para el manga?¿
     func addMyCollection(manga: Manga) {
         var mng = manga
         if let index = mangas.firstIndex(where: { $0.id == mng.id }) {

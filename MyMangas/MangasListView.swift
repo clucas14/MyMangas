@@ -15,8 +15,7 @@ struct MangasListView: View {
     var body: some View {
         ZStack {
             NavigationStack {
-                List {
-                    ForEach(vm.mangas) { manga in
+                List(vm.mangas) { manga in
                         NavigationLink(value: manga) {
                             MangaCellListView(manga: manga)
                                 .swipeActions(edge: .leading) {
@@ -37,7 +36,6 @@ struct MangasListView: View {
                                 }
                         }
                     }
-                }
                 .navigationTitle("Mangas")
                 .searchable(text: vm.isPresentedSearchAuthors ? $vm.searchTextAuthors : $vm.searchText, isPresented: $vm.isPresentedSearchableByAuthors, prompt: vm.isPresentedSearchAuthors ? "Search by author" : "Search by title")
                 .autocorrectionDisabled()

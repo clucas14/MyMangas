@@ -5,7 +5,7 @@
 //  Created by Carlos Lucas Sánchez on 11/1/24.
 //
 
-import SwiftUI
+import Foundation
 
 final class MangaEditVM: ObservableObject {
     

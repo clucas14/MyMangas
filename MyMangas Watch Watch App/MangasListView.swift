@@ -45,15 +45,6 @@ struct MangasListView: View {
             .navigationDestination(for: Manga.self) { manga in
                 MangaDetailView(manga: manga)
             }
-//            .toolbar {
-//                ToolbarItem(placement: .confirmationAction) {
-//                    Button {
-//                        
-//                    } label: {
-//                        Text("Filters")
-//                    }
-//                }
-//            }
         }
     }
 }
