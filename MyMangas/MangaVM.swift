@@ -56,8 +56,10 @@ final class MangaVM: ObservableObject {
         }
     }
     
+    @Published var msg = ""
+    @Published var showAlert = false
+    
     var page = 1
-    // Hay que calcular el total de páginas para que no pueda hacer una llamada a getmangas de una página que no existe
     
     init(network: MangaNetworkInteractorProtocol = NetworkInteractor(), data: DataInteractor = MangaDataInteractor()) {
         self.mangaInteractor = network
@@ -81,8 +83,14 @@ final class MangaVM: ObservableObject {
             await MainActor.run {
                 self.allAuthors = auth
             }
+        } catch let error as NetworkError{
+            print(error)
+            msg = "\(error)"
+            showAlert.toggle()
         } catch {
-            
+            print(error)
+            msg = "\(error)"
+            showAlert.toggle()
         }
     }
     
@@ -92,9 +100,14 @@ final class MangaVM: ObservableObject {
             await MainActor.run {
                 self.mangas += mangs
             }
-            //            Mostrar error en pantalla, ver foto
+        } catch let error as NetworkError{
+            print(error)
+            msg = "\(error)"
+            showAlert.toggle()
         } catch {
             print(error)
+            msg = "\(error)"
+            showAlert.toggle()
         }
     }
     
