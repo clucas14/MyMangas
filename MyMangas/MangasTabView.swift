@@ -33,10 +33,7 @@ struct MangasTabView: View {
                         Label("Mangas", systemImage: "books.vertical")
                     }
             }
-                        .toolbarBackground(.visible, for: .tabBar)
-                        .toolbarBackground(.black.opacity(0.6), for: .tabBar)
         }
-                .tint(.yellow)
     }
 }
 

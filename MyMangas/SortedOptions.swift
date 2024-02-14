@@ -66,14 +66,7 @@ fileprivate struct SortedButton: ViewModifier {
                             Text(SortType.authors.rawValue)
                         }
                     } label: {
-                        ZStack {
-                            Rectangle()
-                                .fill(.black)
-                                .clipShape(Circle())
-                                .opacity(0.6)
-                            Image(systemName: "line.3.horizontal.decrease.circle")
-                                .foregroundStyle(.yellow)
-                        }
+                        Image(systemName: "line.3.horizontal.decrease.circle")
                     }
                 }
             }
