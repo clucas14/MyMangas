@@ -83,7 +83,7 @@ final class MangaVM: ObservableObject {
             await MainActor.run {
                 self.allAuthors = auth
             }
-        } catch let error as NetworkError{
+        } catch let error as NetworkError {
             print(error)
             msg = "\(error)"
             showAlert.toggle()

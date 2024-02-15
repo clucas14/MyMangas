@@ -27,12 +27,7 @@ struct Manga: Hashable, Identifiable, Codable {
     var inCollection: Bool
     var ownedVolumes: Set<Int>
     var readingVolume: Int
-    var completeCollection: Bool
-    
-    //    let tomosComprados: Int?
-    //    let tomoLectura: Int?
-    
-    
+    var completeCollection: Bool   
 }
 
 extension Manga {

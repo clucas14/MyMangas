@@ -36,7 +36,6 @@ struct NetworkInteractor: MangaNetworkInteractorProtocol {
     }
     
     func getMangas(page: Int) async throws -> [Manga] {
-//        try await getJSON(request: .getPaginateMangas(url: .getMangasURL, page: page), type: DTOMangasResult.self).items.map(\.toPresentation)
         try await getJSON(request: .get(url: .getMangasURL, page: page), type: DTOMangasResult.self).items.map(\.toPresentation)
     }
     

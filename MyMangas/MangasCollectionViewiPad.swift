@@ -50,7 +50,6 @@ struct MangasCollectionViewiPad: View {
                 MangaDetailViewiPad(manga: first)
             }
         }
-        .navigationSplitViewStyle(.balanced)
     }
 }
 

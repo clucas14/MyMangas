@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct MangaDetailViewiPad: View {
-    @State var expandedGenres = false
     @State var expandedCollection = false
-    @State var expandedSypnosis = false
     @State var isPresentedEdit = false
     
     @Environment(\.dismiss) var dismiss
@@ -19,57 +17,19 @@ struct MangaDetailViewiPad: View {
     
     var body: some View {
         List {
-            VStack {
-                MangaPictureView(manga: manga, size: .detailPicture)
-                    .padding(.top, 5)
-                MangaCircleScoreView(manga: manga)
-                    .padding(.top, -385)
-                    .padding(.leading, 250)
-            }
-            VStack(alignment: .leading) {
-                if expandedSypnosis {
-                    Text(manga.sypnosis ?? "")
-                        .animation(.default, value: expandedSypnosis)
-                } else {
-                    Text(manga.sypnosis ?? "")
-                        .lineLimit(4)
-                        .animation(.default, value: expandedSypnosis)
-                }
-                Button(expandedSypnosis ? "Less" : "More") {
-                    withAnimation {
-                        expandedSypnosis.toggle()
-                    }
-                }
-                .bold()
-                Divider()
-                HStack {
-                    Text("Japanese title: ")
-                        .bold()
+            HStack {
+                VStack {
+                    MangaPictureView(manga: manga, size: .detailPicture)
+                        .padding(.top, 5)
+                    MangaCircleScoreView(manga: manga)
+                        .padding(.top, -385)
+                        .padding(.leading, 250)
                     Spacer()
-                    Text(manga.titleJapanese ?? "")
                 }
-                Divider()
-                Text("Authors: ")
-                    .bold()
-                Text(manga.authors.isEmpty ? "No information" : manga.listAuthors)
-                Divider()
-                Text("Demographics: ")
-                    .bold()
-                Text(manga.demographics.isEmpty ? "No information" : manga.listDemographics)
-                Divider()
-                Text("Themes: ")
-                    .bold()
-                Text(manga.themes.isEmpty ? "No information" : manga.listThemes)
+                .padding(.top, 20)
+                DetailInformationMangaView(manga: manga)
             }
-            Section("Genres", isExpanded: $expandedGenres) {
-                if !manga.genres.isEmpty {
-                    ForEach(manga.genres) {
-                        Text($0.genre.rawValue)
-                    }
-                } else {
-                    Text("No information")
-                }
-            }
+            SectionGenres(manga: manga)
             Section("My Collection", isExpanded: $expandedCollection) {
                 Text("Volumes: \(manga.listOwnedVolumes)")
                 Text("Reading volume: \(manga.readingVolume)")
@@ -85,6 +45,7 @@ struct MangaDetailViewiPad: View {
         }
         .listStyle(.sidebar)
         .navigationTitle(manga.title)
+        .navigationBarTitleDisplayMode(.inline)
         .fullScreenCover(isPresented: $isPresentedEdit) {
             dismiss()
         } content: {

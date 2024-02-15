@@ -22,37 +22,10 @@ extension DataInteractor {
             url = urlBundle
         }
         let data = try Data(contentsOf: url)
-        return try JSONDecoder().decode(T.self, from: data)
-        
-        
-//        do {
-//            let jsonData = try Data(contentsOf: url)
-//            if let jsonString = String(data: jsonData, encoding: .utf8) {
-//                print("JSON cargado: \(jsonString)")
-//                print("JSON cargado")
-//                print("JSON cargado")
-//                print("JSON cargado")
-//                print("JSON cargado")
-//            }
-//            do {
-//                let mangasCollection = try JSONDecoder().decode(T.self, from: jsonData)
-//                print("Mangas Collection decoded successfully: \(mangasCollection)")
-//                return mangasCollection
-//            } catch {
-//                print("Error decoding JSON: \(error)")
-//                throw error
-//            }
-//
-//        } catch {
-//            print("Error al cargar o decodificar los datos: \(error.localizedDescription)")
-//        }
-//        return T.self as! T
-        
-        
+        return try JSONDecoder().decode(T.self, from: data)  
     }
     
     func saveData<T>(json: T) throws where T: Codable {
-        //        print(docURL)
         let data = try JSONEncoder().encode(json)
         try data.write(to: docURL, options: .atomic)
     }

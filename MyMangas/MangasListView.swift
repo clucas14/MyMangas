@@ -16,26 +16,25 @@ struct MangasListView: View {
         ZStack {
             NavigationStack {
                 List(vm.mangas) { manga in
-                        NavigationLink(value: manga) {
-                            MangaCellListView(manga: manga)
-                                .swipeActions(edge: .leading) {
-                                    Button {
-                                        if manga.inCollection {
-                                            vm.removeMyCollection(manga: manga)
-                                            //                                            Mensaje de si seguro que quiere eliminarlo
-                                        } else {
-                                            selectedManga = manga
-                                        }
-                                    } label: {
-                                        Label(manga.inCollection ? "Remove from my collection" : "Add to my collection", systemImage: manga.inCollection ? "minus" : "plus")
+                    NavigationLink(value: manga) {
+                        MangaCellListView(manga: manga)
+                            .swipeActions(edge: .leading) {
+                                Button {
+                                    if manga.inCollection {
+                                        vm.removeMyCollection(manga: manga)
+                                    } else {
+                                        selectedManga = manga
                                     }
-                                    .tint(manga.inCollection ? .red : .yellow)
+                                } label: {
+                                    Label(manga.inCollection ? "Remove from my collection" : "Add to my collection", systemImage: manga.inCollection ? "minus" : "plus")
                                 }
-                                .onAppear {
-                                    vm.loadNextPage(manga: manga)
-                                }
-                        }
+                                .tint(manga.inCollection ? .red : .yellow)
+                            }
+                            .onAppear {
+                                vm.loadNextPage(manga: manga)
+                            }
                     }
+                }
                 .navigationTitle("Mangas")
                 .searchable(text: vm.isPresentedSearchAuthors ? $vm.searchTextAuthors : $vm.searchText, isPresented: $vm.isPresentedSearchableByAuthors, prompt: vm.isPresentedSearchAuthors ? "Search by author" : "Search by title")
                 .autocorrectionDisabled()
@@ -58,36 +57,7 @@ struct MangasListView: View {
                     }
                 }
             }
-            if !vm.searchTextAuthors.isEmpty && vm.isPresentedAuthors {
-                List {
-                    ForEach(vm.filteredAuthors) { author in
-                        Button {
-                            vm.sortOption = author.id
-                            vm.sortType = .authors
-                            vm.isPresentedAuthors = false
-                        } label: {
-                            Text(author.fullName)
-                        }
-                        .tint(.black)
-                    }
-                }
-                .padding(.top , 50)
-            }
-            if vm.searchEmpty {
-                if #available(iOS 17.0, *) {
-                    ContentUnavailableView.search
-                } else {
-                    VStack {
-                        Image(systemName: "magnifyingglass")
-                            .font(.largeTitle)
-                        Text("No Results")
-                            .font(.title)
-                            .bold()
-                        Text("Check the spelling or try a new search.")
-                            .font(.caption)
-                    }
-                }
-            }
+            EmptySearchView()
         }
     }
 }

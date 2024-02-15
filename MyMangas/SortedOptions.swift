@@ -23,42 +23,9 @@ fileprivate struct SortedButton: ViewModifier {
                         } label: {
                             Text(SortType.nofilter.rawValue)
                         }
-                        Menu {
-                            ForEach(MangaGenres.allCases) {genre in
-                                Button {
-                                    sortOption = genre.rawValue
-                                    sortType = .genres
-                                } label: {
-                                    Text(genre.rawValue)
-                                }
-                            }
-                        } label: {
-                            Text(SortType.genres.rawValue)
-                        }
-                        Menu {
-                            ForEach(MangaThemes.allCases) {theme in
-                                Button {
-                                    sortOption = theme.rawValue
-                                    sortType = .themes
-                                } label: {
-                                    Text(theme.rawValue)
-                                }
-                            }
-                        } label: {
-                            Text(SortType.themes.rawValue)
-                        }
-                        Menu {
-                            ForEach(MangaDemographics.allCases) {demographic in
-                                Button {
-                                    sortOption = demographic.rawValue
-                                    sortType = .demographics
-                                } label: {
-                                    Text(demographic.rawValue)
-                                }
-                            }
-                        } label: {
-                            Text(SortType.demographics.rawValue)
-                        }
+                        menuGenres()
+                        menuThemes()
+                        menuDemographics()
                         Button {
                             vm.isPresentedSearchAuthors = true
                             vm.isPresentedSearchableByAuthors = true
@@ -70,6 +37,51 @@ fileprivate struct SortedButton: ViewModifier {
                     }
                 }
             }
+    }
+    
+    fileprivate func menuGenres() -> Menu<Text, ForEach<[MangaGenres], MangaGenres, Button<Text>>> {
+        return Menu {
+            ForEach(MangaGenres.allCases) {genre in
+                Button {
+                    sortOption = genre.rawValue
+                    sortType = .genres
+                } label: {
+                    Text(genre.rawValue)
+                }
+            }
+        } label: {
+            Text(SortType.genres.rawValue)
+        }
+    }
+    
+    fileprivate func menuThemes() -> Menu<Text, ForEach<[MangaThemes], MangaThemes, Button<Text>>> {
+        return Menu {
+            ForEach(MangaThemes.allCases) {theme in
+                Button {
+                    sortOption = theme.rawValue
+                    sortType = .themes
+                } label: {
+                    Text(theme.rawValue)
+                }
+            }
+        } label: {
+            Text(SortType.themes.rawValue)
+        }
+    }
+    
+    fileprivate func menuDemographics() -> Menu<Text, ForEach<[MangaDemographics], MangaDemographics, Button<Text>>> {
+        return Menu {
+            ForEach(MangaDemographics.allCases) {demographic in
+                Button {
+                    sortOption = demographic.rawValue
+                    sortType = .demographics
+                } label: {
+                    Text(demographic.rawValue)
+                }
+            }
+        } label: {
+            Text(SortType.demographics.rawValue)
+        }
     }
 }
 

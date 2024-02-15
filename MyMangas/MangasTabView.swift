@@ -12,26 +12,26 @@ struct MangasTabView: View {
     var body: some View {
         TabView {
             Group {
-            Group {
-                if UIDevice.current.userInterfaceIdiom == .pad {
-                    MangasCollectionViewiPad()
-                } else {
-                    MangasCollectionView()
-                }
-            }
-                    .tabItem {
-                        Label("My collection", systemImage: "character.book.closed.fill.ja")
+                Group {
+                    if UIDevice.current.userInterfaceIdiom == .pad {
+                        MangasCollectionViewiPad()
+                    } else {
+                        MangasCollectionView()
                     }
-            Group {
-                if UIDevice.current.userInterfaceIdiom == .pad {
-                    MangasListViewiPad()
-                } else {
-                    MangasListView()
                 }
-            }
-                    .tabItem {
-                        Label("Mangas", systemImage: "books.vertical")
+                .tabItem {
+                    Label("My collection", systemImage: "character.book.closed.fill.ja")
+                }
+                Group {
+                    if UIDevice.current.userInterfaceIdiom == .pad {
+                        MangasListViewiPad()
+                    } else {
+                        MangasListView()
                     }
+                }
+                .tabItem {
+                    Label("Mangas", systemImage: "books.vertical")
+                }
             }
         }
     }
