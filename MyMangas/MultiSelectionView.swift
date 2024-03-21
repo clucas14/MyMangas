@@ -13,7 +13,8 @@ struct MultiSelectionView: View {
     var body: some View {
         List {
             if let volumes = editVM.manga.volumes {
-                ForEach(1..<volumes + 1) { volume in
+                // Tengo que poner id: \.self para que no me salga un warning
+                ForEach(1..<volumes + 1, id: \.self) { volume in
                     Button(action: { editVM.toggleSelectionVolume(volume: volume) }) {
                         HStack {
                             Text("Volume \(volume)")

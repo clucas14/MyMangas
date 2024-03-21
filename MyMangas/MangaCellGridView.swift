@@ -29,7 +29,7 @@ struct MangaCellGridView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 6))
                         .padding()
                 }
-                HStack(alignment: .top) {
+                HStack(alignment: .firstTextBaseline) {
                     VStack {
                         Text(manga.title)
                             .font(.headline)

@@ -17,7 +17,7 @@ final class MangaVM: ObservableObject {
             try? mangaDataInteractor.saveData(json: mangasCollection)
         }
     }
-      
+    
     @Published var searchText = "" {
         willSet {
             page = 1
@@ -49,7 +49,12 @@ final class MangaVM: ObservableObject {
         didSet {
             isPresentedSearchAuthors = true
             isPresentedAuthors = true
-            filteredAuthors = allAuthors.filter { $0.fullName.localizedCaseInsensitiveContains(searchTextAuthors) }
+            filteredAuthors = allAuthors.filter { $0.fullName.localizedCaseInsensitiveContains(searchTextAuthors)
+            }
+            // Mejor solución para la búsqueda?¿
+//            let filteredAuthors = allAuthors.filter{ $0.fullName.range(of: searchTextAuthors, options:[.caseInsensitive,
+//                                                                                                   .diacriticInsensitive]) != nil
+//            }
         }
         willSet {
             page = 1
@@ -129,26 +134,26 @@ final class MangaVM: ObservableObject {
         if isLastItem(manga: manga) {
             page += 1
             switch sortType {
-            case .themes:
-                Task {
-                    await sortedMangasByType(sortOption: sortOption)
-                }
-            case .genres:
-                Task {
-                    await sortedMangasByType(sortOption: sortOption)
-                }
-            case .demographics:
-                Task {
-                    await sortedMangasByType(sortOption: sortOption)
-                }
-            case .authors:
-                Task {
-                    await sortedMangasByType(sortOption: sortOption)
-                }
-            case .nofilter:
-                Task {
-                    await searchText.isEmpty ? getMangas() : searchMangas()
-                }
+                case .themes:
+                    Task {
+                        await sortedMangasByType(sortOption: sortOption)
+                    }
+                case .genres:
+                    Task {
+                        await sortedMangasByType(sortOption: sortOption)
+                    }
+                case .demographics:
+                    Task {
+                        await sortedMangasByType(sortOption: sortOption)
+                    }
+                case .authors:
+                    Task {
+                        await sortedMangasByType(sortOption: sortOption)
+                    }
+                case .nofilter:
+                    Task {
+                        await searchText.isEmpty ? getMangas() : searchMangas()
+                    }
             }
         }
     }
@@ -227,33 +232,33 @@ final class MangaVM: ObservableObject {
                 }
             }
             switch sortType {
-            case .themes:
-                let mangs = updateMangas(mangasNew: try await mangaInteractor.getMangasByTheme(page: page, sortOption: sortOption))
-                await MainActor.run {
-                    self.mangas += mangs
-                }
-            case .genres:
-                let mangs = updateMangas(mangasNew: try await mangaInteractor.getMangasByGenre(page: page, sortOption: sortOption))
-                await MainActor.run {
-                    self.mangas += mangs
-                }
-            case .demographics:
-                let mangs = updateMangas(mangasNew: try await mangaInteractor.getMangasByDemographic(page: page, sortOption: sortOption))
-                await MainActor.run {
-                    self.mangas += mangs
-                }
-            case .authors:
-                await searchMangasByAuthor(sortOption: sortOption)
-            case .nofilter:
-                await MainActor.run {
-                    mangas.removeAll()
-                    isPresentedSearchAuthors = false
-                    isPresentedAuthors = false
-                }
-                page = 1
-                Task {
-                    await getMangas()
-                }
+                case .themes:
+                    let mangs = updateMangas(mangasNew: try await mangaInteractor.getMangasByTheme(page: page, sortOption: sortOption))
+                    await MainActor.run {
+                        self.mangas += mangs
+                    }
+                case .genres:
+                    let mangs = updateMangas(mangasNew: try await mangaInteractor.getMangasByGenre(page: page, sortOption: sortOption))
+                    await MainActor.run {
+                        self.mangas += mangs
+                    }
+                case .demographics:
+                    let mangs = updateMangas(mangasNew: try await mangaInteractor.getMangasByDemographic(page: page, sortOption: sortOption))
+                    await MainActor.run {
+                        self.mangas += mangs
+                    }
+                case .authors:
+                    await searchMangasByAuthor(sortOption: sortOption)
+                case .nofilter:
+                    await MainActor.run {
+                        mangas.removeAll()
+                        isPresentedSearchAuthors = false
+                        isPresentedAuthors = false
+                    }
+                    page = 1
+                    Task {
+                        await getMangas()
+                    }
             }
         } catch {
             print(error)
@@ -268,7 +273,7 @@ final class MangaVM: ObservableObject {
             }
         }
     }
-        
+    
     func updateManga(manga: Manga) {
         if let index = mangas.firstIndex(where: { $0.id == manga.id }) {
             mangas[index] = manga
@@ -277,8 +282,8 @@ final class MangaVM: ObservableObject {
             mangasCollection[index] = manga
         }
     }
-        
-//    Aquí sería conveniente usar inout para el manga?¿
+    
+    //    Aquí sería conveniente usar inout para el manga?¿
     func addMyCollection(manga: Manga) {
         var mng = manga
         if let index = mangas.firstIndex(where: { $0.id == mng.id }) {

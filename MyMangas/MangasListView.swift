@@ -40,7 +40,7 @@ struct MangasListView: View {
                 .autocorrectionDisabled()
                 .sortedButton(sortOption: $vm.sortOption, sortType: $vm.sortType)
                 .navigationDestination(for: Manga.self) { manga in
-                    MangaDetailView(manga: manga)
+                    MangaDetailView2(manga: manga)
                 }
                 .sheet(item: $selectedManga, content: { manga in
                     AddMangaCollection(editVM: MangaEditVM(manga: manga))
