@@ -35,18 +35,19 @@ struct MangaDetailView2: View {
                         Text("No information")
                     }
                 }
-                DisclosureGroup("**My Collection**") {
-                    Text("Volumes: \(manga.listOwnedVolumes)")
-                    Text("Reading volume: \(manga.readingVolume)")
-                    Text("Complete collection: \(manga.stringCompleteCollection)")
-                    Button {
-                        isPresentedEdit.toggle()
-                    } label: {
-                        Text("Editar")
+                if manga.inCollection {
+                    DisclosureGroup("**My Collection**") {
+                        Text("Volumes: \(manga.listOwnedVolumes)")
+                        Text("Reading volume: \(manga.readingVolume)")
+                        Text("Complete collection: \(manga.stringCompleteCollection)")
+                        Button {
+                            isPresentedEdit.toggle()
+                        } label: {
+                            Text("Editar")
+                        }
+                        .buttonStyle(.borderedProminent)
                     }
-                    .buttonStyle(.borderedProminent)
                 }
-                .opacity(manga.inCollection ? 1 : 0)
             }
     //        .listStyle(.sidebar)
             .navigationTitle(manga.title)

@@ -16,6 +16,7 @@ fileprivate struct SortedButton: ViewModifier {
     func body(content: Content) -> some View {
         content
             .toolbar {
+                // Mejorarlo viendo la clase 03/04/24 20:40
                 ToolbarItem(placement: .topBarTrailing) {
                     Menu {
                         Button {
