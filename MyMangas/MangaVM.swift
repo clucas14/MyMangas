@@ -49,7 +49,9 @@ final class MangaVM: ObservableObject {
         didSet {
             isPresentedSearchAuthors = true
             isPresentedAuthors = true
-            filteredAuthors = allAuthors.filter { $0.fullName.localizedCaseInsensitiveContains(searchTextAuthors)
+            filteredAuthors = allAuthors.filter { // $0.fullName.localizedCaseInsensitiveContains(searchTextAuthors)
+                // Es mejor usar el localizedStandardContains
+                $0.fullName.localizedStandardContains(searchTextAuthors)
             }
             // Mejor solución para la búsqueda?¿
 //            let filteredAuthors = allAuthors.filter{ $0.fullName.range(of: searchTextAuthors, options:[.caseInsensitive,
