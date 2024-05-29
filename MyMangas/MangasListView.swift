@@ -42,6 +42,9 @@ struct MangasListView: View {
                 .navigationDestination(for: Manga.self) { manga in
                     MangaDetailView2(manga: manga)
                 }
+                .alert("Network Error", isPresented: $vm.showAlert) {} message: {
+                    Text(vm.msg)
+                }
                 .sheet(item: $selectedManga, content: { manga in
                     AddMangaCollection(editVM: MangaEditVM(manga: manga))
                         .presentationDetents([.medium])

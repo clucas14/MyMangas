@@ -23,6 +23,10 @@ fileprivate struct SortedButton: ViewModifier {
                             sortType = .nofilter
                         } label: {
                             Text(SortType.nofilter.rawValue)
+                            Spacer()
+                            if sortType == .nofilter {
+                                Image(systemName: "checkmark")
+                            }
                         }
                         menuGenres()
                         menuThemes()
@@ -32,6 +36,10 @@ fileprivate struct SortedButton: ViewModifier {
                             vm.isPresentedSearchableByAuthors = true
                         } label: {
                             Text(SortType.authors.rawValue)
+                            Spacer()
+                            if sortType == .authors {
+                                Image(systemName: "checkmark")
+                            }
                         }
                     } label: {
                         Image(systemName: "line.3.horizontal.decrease.circle")

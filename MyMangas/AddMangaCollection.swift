@@ -9,9 +9,9 @@ import SwiftUI
 
 struct AddMangaCollection: View {
     @ObservedObject var editVM: MangaEditVM
-    @EnvironmentObject var vm: MangaVM
+    @EnvironmentObject private var vm: MangaVM
     
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         NavigationView {
@@ -24,11 +24,11 @@ struct AddMangaCollection: View {
                 ToolbarItem(placement: .confirmationAction) {
                     Button {
                         if let mang = editVM.validateManga() {
-                            if mang.inCollection {
-                                vm.updateManga(manga: mang)
-                            } else {
+//                            if mang.inCollection {
+//                                vm.updateManga(manga: mang)
+//                            } else {
                                 vm.addMyCollection(manga: mang)
-                            }
+//                            }
                             dismiss()
                         }
                     } label: {

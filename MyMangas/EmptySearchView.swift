@@ -13,17 +13,16 @@ struct EmptySearchView: View {
     var body: some View {
         Group {
             if !vm.searchTextAuthors.isEmpty && vm.isPresentedAuthors {
-                List {
-                    ForEach(vm.filteredAuthors) { author in
-                        Button {
-                            vm.sortOption = author.id
-                            vm.sortType = .authors
-                            vm.isPresentedAuthors = false
-                        } label: {
-                            Text(author.fullName)
-                        }
-                        .tint(.black)
+                List(vm.filteredAuthors) { author in
+                    Button {
+                        vm.sortOption = author.id
+                        vm.sortType = .authors
+                        vm.isPresentedAuthors = false
+                    } label: {
+                        Text(author.fullName)
                     }
+//                    .buttonStyle(.plain)
+                    .tint(.black)
                 }
                 .padding(.top , 50)
             }

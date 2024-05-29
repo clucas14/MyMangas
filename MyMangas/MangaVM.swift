@@ -54,9 +54,9 @@ final class MangaVM: ObservableObject {
                 $0.fullName.localizedStandardContains(searchTextAuthors)
             }
             // Mejor solución para la búsqueda?¿
-//            let filteredAuthors = allAuthors.filter{ $0.fullName.range(of: searchTextAuthors, options:[.caseInsensitive,
-//                                                                                                   .diacriticInsensitive]) != nil
-//            }
+            //            let filteredAuthors = allAuthors.filter{ $0.fullName.range(of: searchTextAuthors, options:[.caseInsensitive,
+            //                                                                                                   .diacriticInsensitive]) != nil
+            //            }
         }
         willSet {
             page = 1
@@ -78,9 +78,10 @@ final class MangaVM: ObservableObject {
             print(error)
             mangasCollection = []
         }
-        Task {
-            await getMangas()
-            await getAuthors()
+        Task(priority: .high) {
+            // Lo meto en una tupla para que se ejecuten las dos funciones a la vez - concurrencia estructurada -  y no de forma serializada
+            await (getMangas(), getAuthors())
+            // await getAuthors()
         }
     }
     
@@ -92,12 +93,16 @@ final class MangaVM: ObservableObject {
             }
         } catch let error as NetworkError {
             print(error)
-            msg = "\(error)"
-            showAlert.toggle()
+            await MainActor.run {
+                msg = "\(error)"
+                showAlert.toggle()
+            }
         } catch {
             print(error)
-            msg = "\(error)"
-            showAlert.toggle()
+            await MainActor.run {
+                msg = "\(error)"
+                showAlert.toggle()
+            }
         }
     }
     
@@ -109,12 +114,16 @@ final class MangaVM: ObservableObject {
             }
         } catch let error as NetworkError{
             print(error)
-            msg = "\(error)"
-            showAlert.toggle()
+            await MainActor.run {
+                msg = "\(error)"
+                showAlert.toggle()
+            }
         } catch {
             print(error)
-            msg = "\(error)"
-            showAlert.toggle()
+            await MainActor.run {
+                msg = "\(error)"
+                showAlert.toggle()
+            }
         }
     }
     

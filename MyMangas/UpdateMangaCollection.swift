@@ -9,10 +9,10 @@ import SwiftUI
 
 struct UpdateMangaCollection: View {
     @ObservedObject var editVM: MangaEditVM
-    @EnvironmentObject var vm: MangaVM
+    @EnvironmentObject private var vm: MangaVM
     @Binding var manga: Manga
     
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         NavigationView {
@@ -26,11 +26,11 @@ struct UpdateMangaCollection: View {
                     Button {
                         if let mang = editVM.validateManga() {
                             manga = mang
-                            if mang.inCollection {
+//                            if mang.inCollection {
                                 vm.updateManga(manga: mang)
-                            } else {
-                                vm.addMyCollection(manga: mang)
-                            }
+//                            } else {
+//                                vm.addMyCollection(manga: mang)
+//                            }
                             dismiss()
                         }
                     } label: {
