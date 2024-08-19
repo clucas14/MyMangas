@@ -23,5 +23,8 @@
 4. **✔️ Verificar Colección Completa**: Indica si has completado la colección de un manga y mantén tu estantería digital organizada.
 
 
-https://github.com/user-attachments/assets/f199dfd7-8063-4614-b324-a586308fdc59
+
+## **Demo de MyMangas**
+
+https://github.com/user-attachments/assets/e6f295f3-12f5-4256-b6de-c6866a8b0d52
 
